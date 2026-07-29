@@ -19,6 +19,7 @@ public class ArcadeController : MonoBehaviour
 
     [Header("Visuals")]
     [SerializeField] private Transform[] wheelMesh;
+    [SerializeField] private TrailRenderer[] _wheelTrail;
 
     [Header("Physics")]
     [SerializeField] private Vector3 centerOfMassOffset = new Vector3(0f, -0.5f, 0f);
@@ -54,11 +55,13 @@ public class ArcadeController : MonoBehaviour
     [SerializeField] private AnimationCurve powerCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
 
     [Header("Inputs")]
-    [SerializeField] Vector2 _moveInput;
-    [SerializeField] bool _driftInput;
+    public Vector2 _moveInput;
+    public bool _driftInput;
     public bool IsDrifting { get; private set; }
 
     private Rigidbody _rigidBody;
+
+    private GameObject _wheelTrailParent;
 
     private float _currentSteerAngle;
     private float[] _wheelSpinAngles = new float[4];
@@ -73,6 +76,22 @@ public class ArcadeController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody>();
         _currentRearGrip = 1f;
         _rigidBody.centerOfMass = centerOfMassOffset;
+
+        _wheelTrail = new TrailRenderer[wheelMesh.Length];
+        _wheelTrailParent = new GameObject("WheelTrails");
+        _wheelTrailParent.transform.parent = transform;
+
+        for (int i =  0; i < wheelMesh.Length; i++)
+        {
+            TrailRenderer trail = wheelMesh[i].GetComponentInChildren<TrailRenderer>();
+
+            if (trail != null)
+            {
+                _wheelTrail[i] = trail;
+                _wheelTrail[i].transform.SetParent(_wheelTrailParent.transform);
+                _wheelTrail[i].emitting = false;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -158,6 +177,8 @@ public class ArcadeController : MonoBehaviour
             _wheelSpinAngles[i] += (wheelForwardSpeed / wheelRadius) * Mathf.Rad2Deg * Time.deltaTime;
             wheelMesh[i].rotation = wheelPoints[i].rotation * Quaternion.Euler(_wheelSpinAngles[i], 0f, 0f);
             wheelMesh[i].position = Vector3.Lerp(wheelMesh[i].position, _wheelTargetPositions[i], Time.deltaTime * 20f);
+
+            _wheelTrail[i].emitting = IsDrifting;
         }
     }
 
@@ -227,24 +248,18 @@ public class ArcadeController : MonoBehaviour
     private void ApplyBraking(Transform wheel, float currentSpeed)
     {
         if (Mathf.Abs(_moveInput.y) > 0.01f) return;
-        if (Mathf.Abs(currentSpeed) <= 0.5f) return;
 
-        Vector3 accelDir = wheel.forward;
-        float brakeForce = -Mathf.Sign(currentSpeed) * deceleration;
-        _rigidBody.AddForceAtPosition(accelDir * brakeForce, wheel.position);
+        float wheelForwardSpeed = Vector3.Dot(wheel.forward, _rigidBody.GetPointVelocity(wheel.position));
+
+        if (Mathf.Abs(wheelForwardSpeed) < 0.01f) return;
+
+        float brakeForce = -Mathf.Sign(wheelForwardSpeed) * deceleration;
+        float lowSpeedThreshold = 2.0f;
+        if (Mathf.Abs(wheelForwardSpeed) < lowSpeedThreshold)
+        {
+            brakeForce = -wheelForwardSpeed * (deceleration / lowSpeedThreshold);
+        }
+
+        _rigidBody.AddForceAtPosition(wheel.forward * brakeForce, wheel.position);
     }
-
-    #region Input Actions
-
-    public void OnMoveInput(InputAction.CallbackContext context)
-    {
-        _moveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnDriftInput(InputAction.CallbackContext context)
-    {
-        _driftInput = context.ReadValueAsButton();
-    }
-
-    #endregion
 }
