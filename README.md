@@ -11,7 +11,7 @@ Inspired by the physics style of *Very Very Valet* by Toyful Games ([Watch Gamep
 * **Friction & Grip Control:** Custom lateral friction cancellation handles cornering and drifting, while controlled longitudinal forces manage acceleration and braking without unwanted drag.
 * **Configurable Drive-Trains:** Easily switch between **All-Wheel Drive (AWD)**, **Front-Wheel Drive (FWD)**, and **Rear-Wheel Drive (RWD)** in the inspector to change how the car handles and drifts.
 
-![Cube Car Raycast Demo](docs/Cube-Car.mp4)
+https://github.com/user-attachments/assets/d1ad8c1a-314f-4b6d-a4a8-f6650c117fd7
 
 ---
 
@@ -50,7 +50,7 @@ private void ApplySuspension(int index, Transform wheel, RaycastHit hit)
 * **Damper Force:** Measures how fast the wheel is compressing or rebounding (`springVelocity`) and resists that movement so the car doesn't bounce like a pogo stick.
 * **Bumps & Rough Terrain:** When one wheel hits a speed bump or curb, only that raycast shortens. The individual spring absorbs the impact without throwing the entire car body into the air.
 
-![Suspension Demo](docs/Suspension.mp4)
+https://github.com/user-attachments/assets/e8874b6b-6248-4511-9693-d6427b61e8b9
 
 ## Sideways Grip & Steering
 
@@ -75,8 +75,7 @@ if (forwardSurplus > 0.1f)
 * **Drag Mitigation:** In simple arcade physics, cancelling sideways speed during a turn acts like a brake and kills your forward momentum. The `steeringDragMitigation` variable tapers off that resistance so you retain speed through corners.
 * **Load-Based Grip:** Grip is multiplied by the current spring compression (`normalLoadFactor`), meaning a tire pressed hard into the ground gets more cornering traction.
 
-[Video is inside docs/Friction.mp4]
-![Friction Negation Demo](docs/Friction.mp4)
+https://github.com/user-attachments/assets/6ab561c4-4a4e-4efc-8344-3bdc2172cdfb
 
 ### Speed-Sensitive Steering
 
@@ -114,8 +113,7 @@ IsDrifting = _isGrounded[2] && rearWheelDrifting;
 * **Real Drift Verification:** Simply holding the drift button doesn't trigger skid marks. The script checks `rearLateralSlip > driftThreshold` to prove the back of the car is actually sliding sideways.
 * **Trail Renderers:** The `IsDrifting` boolean directly toggles the `emitting` state of the wheel trail renderers so tire marks only appear during an active skid.
 
-[Video is inside docs/Drift.mp4]
-![Car Drifting Demo](docs/Drift.mp4)
+https://github.com/user-attachments/assets/cb626ccf-bb6a-47dc-b031-d4369742f110
 
 ---
 
@@ -134,8 +132,7 @@ float currentSpeed = Vector3.Dot(_rigidBody.linearVelocity, flatForward);
 * **Accurate Speed:** Ignoring vertical fall speed ensures the engine delivers consistent torque whether you are driving on a flat drag strip or climbing a steep hill.
 * **Natural Hold:** When resting on a slope, gravity compresses the downhill springs more than the uphill ones. That extra compression increases normal load grip, preventing the car from slowly sliding backward down the hill.
 
-[Video is inside docs/Terrain.mp4]
-![Different Terrain Demo](docs/Terrain.mp4)
+https://github.com/user-attachments/assets/30e06963-6f54-41e3-8279-363170378df2
 
 ### Jumps & Airborne State
 
@@ -145,8 +142,7 @@ When the car launches off a ramp, the controller disables ground physics and ext
 * **Visual Wheel Drop:** The visual target positions drop down to their maximum stretch limit (`restLength + sprintTravel`), letting the tires hang down out of the wheel wells while in the air.
 * **Landing Impact:** The moment raycasts touch the ground again, the springs compress and absorb the landing shock without clipping through the floor.
 
-[Video is inside docs/Slope-Jump.mp4]
-![Jumping off slope Demo](docs/Slope-Jump.mp4)
+https://github.com/user-attachments/assets/eec5601e-6fc3-442c-816f-1089a4ca5179
 
 ---
 
