@@ -9,47 +9,46 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineCamera followCamera;
 
     private ArcadeController _currentController;
-
     private int _currentControllerIndex;
 
     void Start()
     {
-        _currentController = controllers[0];
+        if (controllers == null || controllers.Count == 0)
+        {
+            Debug.LogError("GameManager: No controllers assigned!");
+            return;
+        }
+
         _currentControllerIndex = 0;
-        followCamera.Target.TrackingTarget = _currentController.transform;
+        _currentController = controllers[_currentControllerIndex];
+
+        if (followCamera != null)
+            followCamera.Target.TrackingTarget = _currentController.transform;
     }
 
     public void OnChangeCarInput(InputAction.CallbackContext context)
     {
-        int totalCars = controllers.Count;
-        if (_currentControllerIndex + 1 > totalCars)
+        if (!context.performed || controllers.Count <= 1) return;
+
+        if (_currentController != null)
         {
-            _currentControllerIndex = 0;
-            _currentController = controllers[_currentControllerIndex];
-        }
-        else
-        {
-            _currentControllerIndex++;
-            _currentController = controllers[_currentControllerIndex];
+            _currentController._moveInput = Vector2.zero;
         }
 
-        followCamera.Target.TrackingTarget = _currentController.transform;
+        _currentControllerIndex = (_currentControllerIndex + 1) % controllers.Count;
+        _currentController = controllers[_currentControllerIndex];
+
+        if (followCamera != null)
+        {
+            followCamera.Target.TrackingTarget = _currentController.transform;
+        }
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        _currentController._moveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnDriftInput(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        if (_currentController != null)
         {
-            _currentController._driftInput = true;
-        }
-        if (context.canceled)
-        {
-            _currentController._driftInput = false;
+            _currentController._moveInput = context.ReadValue<Vector2>();
         }
     }
 }

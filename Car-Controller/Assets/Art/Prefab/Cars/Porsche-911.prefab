@@ -1556,34 +1556,66 @@ MonoBehaviour:
   maxSteerAngle: 25
   highSpeedSteerLimit: 12
   steerSpeed: 5
-  gripCurve:
+  steeringDragMitigation: 0.5
+  maxCorrectiveAccel: 200
+  frontWheelTraction:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.003047943
+      value: 0.95
+      inSlope: -0.05460358
+      outSlope: -0.05460358
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.2970703
+    - serializedVersion: 3
+      time: 0.35
+      value: 0.8
+      inSlope: -0.6167281
+      outSlope: -0.6167281
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.18964979
+      outWeight: 0.5666169
+    - serializedVersion: 3
+      time: 1
+      value: 0.55
+      inSlope: 0.06456446
+      outSlope: 0.06456446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14963618
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rearWheelTraction:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.95
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.010529852
+      outSlope: 0.010529852
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.2811653
     - serializedVersion: 3
       time: 1
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
+      value: 0.2
+      inSlope: -0.24841917
+      outSlope: -0.24841917
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.11432922
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steeringDragMitigation: 0.5
-  maxCorrectiveAccel: 200
-  driftGripFactor: 0.2
-  driftGripTransition: 8
+  maxLateralSlip: 10
   driftThreshold: 3
   maxSpeed: 45
   acceleration: 2500
@@ -1593,7 +1625,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 0.65
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1601,8 +1633,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.45
-      value: 1.0019035
+      time: 0.2
+      value: 1
       inSlope: -0.004944892
       outSlope: -0.004944892
       tangentMode: 0
@@ -1631,7 +1663,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _moveInput: {x: 0, y: 0}
-  _driftInput: 0
 --- !u!1 &6713640813176015691
 GameObject:
   m_ObjectHideFlags: 0

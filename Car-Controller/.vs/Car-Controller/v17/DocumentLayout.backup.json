@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,8 +30,7 @@
               "RelativeToolTip": "Assets\\_Scripts\\GameManager.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T17:46:37.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-26T17:46:37.632Z"
             },
             {
               "$type": "Document",
@@ -41,7 +40,7 @@
               "RelativeDocumentMoniker": "Assets\\_Scripts\\ArcadeController.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\ArcadeController.cs",
               "RelativeToolTip": "Assets\\_Scripts\\ArcadeController.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAcwO0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAUwP4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-27T06:20:57.928Z",
               "EditorCaption": ""

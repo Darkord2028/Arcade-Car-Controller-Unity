@@ -54,26 +54,31 @@ https://github.com/user-attachments/assets/e8874b6b-6248-4511-9693-d6427b61e8b9
 
 ## Sideways Grip & Steering
 
-### Sideways Friction & Forward Drag Mitigation
+### Dynamic Slip Curves & Forward Drag Mitigation
 
-To stop the car from sliding sideways like a hockey puck, the script checks how fast each tire is moving along its own horizontal right axis and applies a counter-force.
+To stop the car from sliding sideways like a hockey puck, the script checks how fast each tire is moving along its own horizontal right axis. Grip dynamically drops as the tire slips faster, simulating real traction limits.
 
 ```csharp
 Vector3 steeringDir = wheel.right;
 Vector3 tireWorldVel = _rigidBody.GetPointVelocity(wheel.position);
 float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
 
-float forwardSurplus = Vector3.Dot(wheel.forward, tireWorldVel);
-if (forwardSurplus > 0.1f)
-{
-    steeringVel *= (1f - steeringDragMitigation);
-}
+// Normalize the sideways sliding speed for the AnimationCurve (0 to 1)
+float normalizedSlip = Mathf.Clamp01(Mathf.Abs(steeringVel) / maxLateralSlip);
+
+// Evaluate grip based on whether it's a front or rear tire
+AnimationCurve activeTractionCurve = (index >= 2) ? rearWheelTraction : frontWheelTraction;
+float slipGrip = activeTractionCurve.Evaluate(normalizedSlip);
+
+// Apply weight transfer multiplier (compressed springs = more grip)
+float normalLoadFactor = Mathf.Clamp(compression, 0.2f, 1.5f);
+float finalGrip = slipGrip * normalLoadFactor;
 
 ```
 
-* **Isolating Slip:** `Vector3.Dot(steeringDir, tireWorldVel)` measures exactly how fast the tire is sliding sideways across the asphalt.
-* **Drag Mitigation:** In simple arcade physics, cancelling sideways speed during a turn acts like a brake and kills your forward momentum. The `steeringDragMitigation` variable tapers off that resistance so you retain speed through corners.
-* **Load-Based Grip:** Grip is multiplied by the current spring compression (`normalLoadFactor`), meaning a tire pressed hard into the ground gets more cornering traction.
+* **Traction Curves:** By mapping sideways velocity against an AnimationCurve, the car dynamically transitions from 100% grip (`driving clean`) to a lower percentage when pushed into a slide.
+* **Weight Transfer:** Grip is multiplied by the current spring compression (`normalLoadFactor`), meaning a front tire pressed hard into the ground under braking gets more cornering bite.
+* **Drag Mitigation:** Cancelling sideways speed during a turn normally acts like a brake. The `steeringDragMitigation` variable tapers off that resistance so the car retains its forward momentum through corners.
 
 https://github.com/user-attachments/assets/6ab561c4-4a4e-4efc-8344-3bdc2172cdfb
 
@@ -94,24 +99,24 @@ float targetSteerAngle = _moveInput.x * dynamicMaxSteer;
 
 ## Drifting & Skid Marks
 
-Drifting works by temporarily dropping the grip multiplier on the rear axle while keeping the front tires glued to the road.
+Drifting is entirely physics-driven using the `rearWheelTraction` curve. By setting the rear tires to lose grip sharply at high slip speeds while keeping the front tires planted, the car naturally kicks its tail out into a controlled oversteer.
 
 ```csharp
-// Smoothly transition rear grip when drift input is held
-float targetRearGrip = _driftInput ? driftGripFactor : 1f;
-_currentRearGrip = Mathf.MoveTowards(_currentRearGrip, targetRearGrip, driftGripTransition * Time.fixedDeltaTime);
+// Inside the wheel loop, check the rear axle's slip speed
+if (i == 2) 
+{
+    float rearLateralSlip = Mathf.Abs(Vector3.Dot(wheel.right, _rigidBody.GetPointVelocity(wheel.position)));
+    rearWheelDrifting = rearLateralSlip > driftThreshold;
+}
 
-// Verify the rear wheels are actually sliding sideways
-float rearLateralSlip = Mathf.Abs(Vector3.Dot(wheel.right, _rigidBody.GetPointVelocity(wheel.position)));
-bool rearWheelDrifting = rearLateralSlip > driftThreshold;
-
+// ... Outside the wheel loop:
 IsDrifting = _isGrounded[2] && rearWheelDrifting;
 
 ```
 
-* **Smooth Transition:** `Mathf.MoveTowards` prevents the rear tires from instantly snapping between normal grip and drift grip, giving you a smooth entry into the slide.
-* **Real Drift Verification:** Simply holding the drift button doesn't trigger skid marks. The script checks `rearLateralSlip > driftThreshold` to prove the back of the car is actually sliding sideways.
-* **Trail Renderers:** The `IsDrifting` boolean directly toggles the `emitting` state of the wheel trail renderers so tire marks only appear during an active skid.
+* **Natural Drift:** No artificial state-swapping required. If the rear tires slide fast enough, the curve lowers their grip, sustaining the drift until the player counters.
+* **Real Drift Verification:** The script explicitly checks `rearLateralSlip > driftThreshold` to prove the back of the car is actually sliding sideways.
+* **Trail Renderers:** The `IsDrifting` boolean directly toggles the emitting state of the wheel trail renderers, so tire marks only appear during an active skid.
 
 https://github.com/user-attachments/assets/cb626ccf-bb6a-47dc-b031-d4369742f110
 
@@ -186,7 +191,9 @@ void LateUpdate()
 | **Rest Length / Travel** | `0.3 / 0.15` | Resting suspension height and maximum allowable upward/downward stretch. |
 | **Anti-Roll Stiffness** | `5000` | Force applied across left/right wheels to eliminate body roll during cornering. |
 | **Steering Drag Mitigation** | `0.5` | How much sideways turning drag is ignored (`0` = full drag, `1` = zero drag). |
-| **Drift Grip Factor** | `0.2` | Traction multiplier applied to rear wheels during a drift (`0.2` = 20% grip). |
+| **Front/Rear Traction Curves** | `AnimationCurve` | Maps lateral slip speed (X) to remaining tire grip % (Y). Shapes how the car turns and drifts. |
+| **Max Lateral Slip** | `10f` | The maximum sideways sliding speed (m/s) that maps to `1.0` on the traction curves. |
+| **Drift Threshold** | `3f` | The minimum sideways sliding speed required to trigger the skid mark trails. |
 | **Max Corrective Accel** | `200` | Clamps maximum sideways counter-force to prevent physics jitter on high-grip surfaces. |
 
----
+--- 

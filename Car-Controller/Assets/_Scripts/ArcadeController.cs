@@ -39,13 +39,13 @@ public class ArcadeController : MonoBehaviour
     [SerializeField] private float maxSteerAngle = 35f;
     [SerializeField] private float highSpeedSteerLimit = 12f;
     [SerializeField] private float steerSpeed = 5f;
-    [SerializeField] private AnimationCurve gripCurve = AnimationCurve.EaseInOut(0f, 0.95f, 1f, 0.5f);
     [SerializeField][Range(0f, 1f)] private float steeringDragMitigation = 0.5f;
     [SerializeField] private float maxCorrectiveAccel = 200f;
 
     [Header("Drift")]
-    [SerializeField] private float driftGripFactor = 0.2f;
-    [SerializeField] private float driftGripTransition = 8f;
+    [SerializeField] private AnimationCurve frontWheelTraction;
+    [SerializeField] private AnimationCurve rearWheelTraction;
+    [SerializeField] private float maxLateralSlip = 10f; 
     [SerializeField] private float driftThreshold = 3f;
 
     [Header("Acceleration")]
@@ -56,7 +56,6 @@ public class ArcadeController : MonoBehaviour
 
     [Header("Inputs")]
     public Vector2 _moveInput;
-    public bool _driftInput;
     public bool IsDrifting { get; private set; }
 
     private Rigidbody _rigidBody;
@@ -66,7 +65,6 @@ public class ArcadeController : MonoBehaviour
     private float _currentSteerAngle;
     private float[] _wheelSpinAngles = new float[4];
     private Vector3[] _wheelTargetPositions = new Vector3[4];
-    private float _currentRearGrip;
 
     private float[] _wheelCompressions = new float[4];
     private bool[] _isGrounded = new bool[4];
@@ -74,7 +72,6 @@ public class ArcadeController : MonoBehaviour
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
-        _currentRearGrip = 1f;
         _rigidBody.centerOfMass = centerOfMassOffset;
 
         _wheelTrail = new TrailRenderer[wheelMesh.Length];
@@ -109,9 +106,6 @@ public class ArcadeController : MonoBehaviour
         wheelPoints[0].localRotation = Quaternion.Euler(0f, _currentSteerAngle, 0f);
         wheelPoints[1].localRotation = Quaternion.Euler(0f, _currentSteerAngle, 0f);
 
-        float targetRearGrip = _driftInput ? driftGripFactor : 1f;
-        _currentRearGrip = Mathf.MoveTowards(_currentRearGrip, targetRearGrip, driftGripTransition * Time.fixedDeltaTime);
-
         bool rearWheelDrifting = false;
 
         for (int i = 0; i < wheelPoints.Length; i++)
@@ -129,10 +123,8 @@ public class ArcadeController : MonoBehaviour
 
                 _wheelTargetPositions[i] = hit.point + (wheel.up * wheelRadius);
 
-                float gripOverride = (i >= 2) ? _currentRearGrip : 1f;
-
                 ApplySuspension(i, wheel, hit);
-                ApplySteering(wheel, _wheelCompressions[i], gripOverride, currentSpeed);
+                ApplySteering(i, wheel, _wheelCompressions[i]);
 
                 if (i == 2)
                 {
@@ -150,7 +142,7 @@ public class ArcadeController : MonoBehaviour
                     ApplyThrottle(wheel, currentSpeed);
                 }
 
-                ApplyBraking(wheel, currentSpeed);
+                ApplyBraking(wheel);
             }
             else
             {
@@ -209,16 +201,21 @@ public class ArcadeController : MonoBehaviour
             _rigidBody.AddForceAtPosition(wheelPoints[rightIndex].up * antiRollForce, wheelPoints[rightIndex].position);
     }
 
-    private void ApplySteering(Transform wheel, float compression, float gripOverride, float currentSpeed)
+    private void ApplySteering(int index, Transform wheel, float compression)
     {
-        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxSpeed);
-
-        float normalLoadFactor = Mathf.Clamp(compression, 0.2f, 1.5f);
-        float gripFactor = gripCurve.Evaluate(normalizedSpeed) * normalLoadFactor * gripOverride;
-
         Vector3 steeringDir = wheel.right;
         Vector3 tireWorldVel = _rigidBody.GetPointVelocity(wheel.position);
         float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
+
+        float normalizedSlip = Mathf.Clamp01(Mathf.Abs(steeringVel) / maxLateralSlip);
+
+        AnimationCurve activeTractionCurve = (index >= 2) ? rearWheelTraction : frontWheelTraction;
+
+        float slipGrip = activeTractionCurve.Evaluate(normalizedSlip);
+
+        float normalLoadFactor = Mathf.Clamp(compression, 0.2f, 1.5f);
+
+        float finalGrip = slipGrip * normalLoadFactor;
 
         float forwardSurplus = Vector3.Dot(wheel.forward, tireWorldVel);
         if (forwardSurplus > 0.1f)
@@ -226,7 +223,7 @@ public class ArcadeController : MonoBehaviour
             steeringVel *= (1f - steeringDragMitigation);
         }
 
-        float desiredVelChange = -steeringVel * gripFactor;
+        float desiredVelChange = -steeringVel * finalGrip;
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
         desiredAccel = Mathf.Clamp(desiredAccel, -maxCorrectiveAccel, maxCorrectiveAccel);
@@ -245,7 +242,7 @@ public class ArcadeController : MonoBehaviour
         _rigidBody.AddForceAtPosition(accelDir * availableTorque, wheel.position);
     }
 
-    private void ApplyBraking(Transform wheel, float currentSpeed)
+    private void ApplyBraking(Transform wheel)
     {
         if (Mathf.Abs(_moveInput.y) > 0.01f) return;
 
