@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\driftingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\driftingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,29 +22,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "DriftingController.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\DriftingController.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\DriftingController.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\DriftingController.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\DriftingController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-31T09:13:42.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\GameManager.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\_Scripts\\GameManager.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T17:46:37.632Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ArcadeController.cs",
               "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\ArcadeController.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\ArcadeController.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\ArcadeController.cs",
               "RelativeToolTip": "Assets\\_Scripts\\ArcadeController.cs",
-              "ViewState": "AgIAAOQAAAAAAAAAAAAUwP4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAgwPIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-27T06:20:57.928Z",
               "EditorCaption": ""
