@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class DriftingController : MonoBehaviour
 {
+    [Header("Debug Values")]
+    [SerializeField] private bool useThrottleEX = false;
+    [SerializeField] private bool useBrakingEX = false;
+
     [Header("Camera")]
     [SerializeField] private Transform _cameraTransform;
 
@@ -27,6 +31,8 @@ public class DriftingController : MonoBehaviour
     [Header("Drifting")]
     [SerializeField] private float baseDriftAngle = 35f;
     [SerializeField] private float driftSteerInfluence = 15f;
+    [SerializeField] private float maxDriftOffset;
+    [SerializeField] private float minDriftOffset;
 
     [Header("Chassis Visual Polish")]
     [SerializeField] private Transform _chassisMesh;
@@ -65,6 +71,7 @@ public class DriftingController : MonoBehaviour
     private bool[] _isGrounded = new bool[4];
 
     private int _driftDirection = 0; // -1 = left, 1 = right, 0 = not drifting
+    private float _currentDrfitOffset = 0;
 
     private void Awake()
     {
@@ -120,8 +127,10 @@ public class DriftingController : MonoBehaviour
 
         if (groundedWheelCount > 0)
         {
-            ApplyThrottle(currentSpeed);
-            ApplyBraking();
+            if (!useThrottleEX) ApplyThrottle(currentSpeed);
+            if (!useBrakingEX) ApplyBraking();
+            if (useThrottleEX) ApplyThrottleEX(currentSpeed);
+            if (useBrakingEX) ApplyBrakingEX();
             AlignToCamera();
             HandleLateralSlip();
         }
@@ -179,7 +188,10 @@ public class DriftingController : MonoBehaviour
             if (_driftDirection == 0)
             {
                 if (_moveInput.x < -0.1f)
+                {
                     _driftDirection = -1;
+
+                }
                 else if (_moveInput.x > 0.1f)
                     _driftDirection = 1;
                 else
@@ -228,6 +240,28 @@ public class DriftingController : MonoBehaviour
         }
     }
 
+    private void ApplyThrottleEX(float currentSpeed)
+    {
+        if (_cameraTransform == null) return;
+
+        float throttleInput = (_driftDirection != 0) ? 1f : _moveInput.y;
+        if (Mathf.Abs(throttleInput) < 0.01f) return;
+
+        Vector3 accelDir = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
+
+        float targetSpeed = throttleInput * maxSpeed;
+        float speedDiff = targetSpeed - currentSpeed;
+        float desiredAccel = speedDiff / Time.fixedDeltaTime;
+
+        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxSpeed);
+        float maxForceAvailable = powerCurve.Evaluate(normalizedSpeed) * acceleration;
+        float maxAccelForThisSpeed = maxForceAvailable / _rigidbody.mass;
+
+        desiredAccel = Mathf.Clamp(desiredAccel, -maxAccelForThisSpeed, maxAccelForThisSpeed);
+
+        _rigidbody.AddForce(accelDir * desiredAccel, ForceMode.Acceleration);
+    }
+
     private void ApplyBraking()
     {
         if (Mathf.Abs(_moveInput.y) > 0.01f || _driftDirection != 0 || _cameraTransform == null) return;
@@ -247,6 +281,22 @@ public class DriftingController : MonoBehaviour
         _rigidbody.AddForce(flatCamForward * brakeForce);
     }
 
+    private void ApplyBrakingEX()
+    {
+        if (Mathf.Abs(_moveInput.y) > 0.01f || _driftDirection != 0 || _cameraTransform == null) return;
+
+        Vector3 flatCamForward = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
+        float forwardSpeed = Vector3.Dot(flatCamForward, _rigidbody.linearVelocity);
+
+        if (Mathf.Abs(forwardSpeed) < 0.01f) return;
+
+        float desiredAccel = -forwardSpeed / Time.fixedDeltaTime;
+        float maxBrakeAccel = deceleration / _rigidbody.mass;
+
+        desiredAccel = Mathf.Clamp(desiredAccel, -maxBrakeAccel, maxBrakeAccel);
+
+        _rigidbody.AddForce(flatCamForward * desiredAccel, ForceMode.Acceleration);
+    }
     private void AlignToCamera()
     {
         if (_cameraTransform == null) return;
@@ -257,7 +307,8 @@ public class DriftingController : MonoBehaviour
         if (_driftDirection != 0)
         {
             float driftAngle = (baseDriftAngle * _driftDirection) + (_moveInput.x * driftSteerInfluence);
-            camFwdFlat = Quaternion.AngleAxis(driftAngle, Vector3.up) * camFwdFlat;
+            float clampedDriftAngle = Mathf.Clamp(driftAngle, minDriftOffset, maxDriftOffset);
+            camFwdFlat = Quaternion.AngleAxis(clampedDriftAngle, Vector3.up) * camFwdFlat;
         }
 
         float angleOffset = Vector3.SignedAngle(carFwdFlat, camFwdFlat, Vector3.up) * Mathf.Deg2Rad;

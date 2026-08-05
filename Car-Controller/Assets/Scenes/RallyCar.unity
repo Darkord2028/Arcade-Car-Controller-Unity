@@ -1441,6 +1441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1617590f65177044aa5b9d4c0f6483b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DriftingController
+  useThrottleEX: 1
+  useBrakingEX: 1
   _cameraTransform: {fileID: 1728179371}
   wheelPoints:
   - {fileID: 1403692182}
@@ -1453,14 +1455,14 @@ MonoBehaviour:
   whatIsDrivable:
     serializedVersion: 2
     m_Bits: 64
-  springStiffness: 2500
-  damperStiffness: 250
+  springStiffness: 1500
+  damperStiffness: 150
   restLength: 0.3
   sprintTravel: 0.15
   wheelRadius: 0.3
-  maxSpeed: 45
-  acceleration: 600
-  deceleration: 400
+  maxSpeed: 15
+  acceleration: 500
+  deceleration: 450
   sidewaysSlip: 0.8
   powerCurve:
     serializedVersion: 2
@@ -1507,11 +1509,11 @@ MonoBehaviour:
   baseDriftAngle: 25
   driftSteerInfluence: 15
   _chassisMesh: {fileID: 707006115317138044}
-  normalYawAngle: 30
+  normalYawAngle: 25
   normalRollAngle: 2
-  driftYawAngle: 25
-  driftCounterRollAngle: 15
-  leanSmoothSpeed: 10
+  driftYawAngle: 15
+  driftCounterRollAngle: 10
+  leanSmoothSpeed: 8
   turnStrength: 60
   turnDamper: 15
   maxAlignmentTorque: 100
