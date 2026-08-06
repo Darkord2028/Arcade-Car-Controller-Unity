@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Assets\\_Scripts\\DriftingController.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\DriftingController.cs",
               "RelativeToolTip": "Assets\\_Scripts\\DriftingController.cs",
-              "ViewState": "AgIAACsBAAAAAAAAAAAUwEABAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAEwHcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-31T09:13:42.695Z",
               "EditorCaption": ""
@@ -73,9 +73,10 @@
               "RelativeDocumentMoniker": "Assets\\_Scripts\\ArcadeController.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\ArcadeController.cs",
               "RelativeToolTip": "Assets\\_Scripts\\ArcadeController.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAIwOYAAABdAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAgwEAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-27T06:20:57.928Z"
+              "WhenOpened": "2026-06-27T06:20:57.928Z",
+              "EditorCaption": ""
             }
           ]
         }

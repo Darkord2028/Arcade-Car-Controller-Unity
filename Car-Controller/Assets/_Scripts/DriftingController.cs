@@ -30,9 +30,19 @@ public class DriftingController : MonoBehaviour
 
     [Header("Drifting")]
     [SerializeField] private float baseDriftAngle = 35f;
-    [SerializeField] private float driftSteerInfluence = 15f;
-    [SerializeField] private float maxDriftOffset;
-    [SerializeField] private float minDriftOffset;
+    [SerializeField] private float driftSteerInfluence = 30f;
+    [SerializeField] private float maxDriftOffset = 60;
+    [SerializeField] private float minDriftOffset = 10;
+
+    [Header("Boosting")]
+    [SerializeField] private float minDriftTimeForBoost = 1.0f;
+    [SerializeField] private float maxDriftTimeForBoost = 3.5f;
+    [SerializeField] private float maxBoostDuration = 2.0f;
+    [SerializeField, Range(0, 1)] private float boostPercentage = 0.5f;
+
+    [Header("Drift Camera Turning")]
+    [SerializeField] private float driftAutoTurnSpeed = 70f;
+    [SerializeField] private float driftControlInfluence = 40f;
 
     [Header("Chassis Visual Polish")]
     [SerializeField] private Transform _chassisMesh;
@@ -68,10 +78,14 @@ public class DriftingController : MonoBehaviour
     // Private Variables
     private readonly RaycastHit[] _wheelHitResults = new RaycastHit[1];
     private float[] _wheelCompressions = new float[4];
+    private float[] _wheelSpinAngles = new float[4];
     private bool[] _isGrounded = new bool[4];
+    private Vector3[] _wheelTargetPositions = new Vector3[4];
 
     private int _driftDirection = 0; // -1 = left, 1 = right, 0 = not drifting
-    private float _currentDrfitOffset = 0;
+    private float _currentDriftOffset = 0;
+    private float _currentBoostChargeTime;
+    private float _activeBoostTimer;
 
     private void Awake()
     {
@@ -80,7 +94,20 @@ public class DriftingController : MonoBehaviour
 
     private void Update()
     {
-        float turnAmount = _moveInput.x * turnSpeed * Time.deltaTime;
+        float turnAmount = 0f;
+
+        if (_driftDirection != 0)
+        {
+            float autoTurn = _driftDirection * driftAutoTurnSpeed;
+            float playerControl = _moveInput.x * driftControlInfluence;
+
+            turnAmount = (autoTurn + playerControl) * Time.deltaTime;
+        }
+        else
+        {
+            turnAmount = _moveInput.x * turnSpeed * _moveInput.y * Time.deltaTime;
+        }
+
         _cameraTransform.Rotate(0f, turnAmount, 0f, Space.World);
     }
 
@@ -89,7 +116,8 @@ public class DriftingController : MonoBehaviour
         Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         float currentSpeed = Vector3.Dot(_rigidbody.linearVelocity, flatForward);
 
-        UpdateDriftState();
+        UpdateDriftState(currentSpeed);
+        UpdateBoost();
 
         int groundedWheelCount = 0;
 
@@ -114,6 +142,7 @@ public class DriftingController : MonoBehaviour
 
                 float currentSpringLength = hit.distance - wheelRadius;
                 _wheelCompressions[i] = Mathf.Clamp01((restLength - currentSpringLength) / sprintTravel);
+                _wheelTargetPositions[i] = hit.point + (wheel.up * wheelRadius);
 
                 ApplySuspension(i, wheel, hit);
             }
@@ -121,6 +150,8 @@ public class DriftingController : MonoBehaviour
             {
                 _isGrounded[i] = false;
                 _wheelCompressions[i] = 0f;
+                _wheelTargetPositions[i] = wheel.position - (wheel.up * maxLength);
+
                 Debug.DrawLine(wheel.position, wheel.position - wheel.up * maxLength, Color.red);
             }
         }
@@ -144,6 +175,7 @@ public class DriftingController : MonoBehaviour
         }
 
         AnimateChassis();
+        AnimateWheels();
     }
 
     private void AnimateChassis()
@@ -160,8 +192,8 @@ public class DriftingController : MonoBehaviour
         }
         else
         {
-            targetYawY = _moveInput.x * normalYawAngle;
-            targetRollZ = -_moveInput.x * normalRollAngle;
+            targetYawY = _moveInput.x * _moveInput.y * normalYawAngle;
+            targetRollZ = -_moveInput.x * _moveInput.y * normalRollAngle;
         }
 
         Quaternion targetRotation = Quaternion.Euler(0f, targetYawY, targetRollZ);
@@ -170,28 +202,42 @@ public class DriftingController : MonoBehaviour
             targetRotation,
             Time.deltaTime * leanSmoothSpeed
         );
+    }
 
+    private void AnimateWheels()
+    {
         float wheelSteerAngle = _moveInput.x * 30f;
-        for (int i = 0; i < 2; i++)
+
+        for (int i = 0; i < wheelMeshes.Length; i++)
         {
-            if (wheelMeshes[i] != null)
+            if (wheelMeshes[i] == null) continue;
+            float wheelForwardSpeed = Vector3.Dot(_rigidbody.GetPointVelocity(wheelPoints[i].position), wheelPoints[i].forward);
+            _wheelSpinAngles[i] += (wheelForwardSpeed / wheelRadius) * Mathf.Rad2Deg * Time.deltaTime;
+
+            Quaternion baseRotation = wheelPoints[i].rotation;
+            if (i < 2)
             {
-                wheelMeshes[i].localRotation = Quaternion.Euler(0f, wheelSteerAngle, 0f);
+                baseRotation *= Quaternion.Euler(0f, wheelSteerAngle, 0f);
             }
+
+            wheelMeshes[i].rotation = baseRotation * Quaternion.Euler(_wheelSpinAngles[i], 0f, 0f);
+            //Vector3 wheelPos = Vector3.Lerp(wheelMeshes[i].position, _wheelTargetPositions[i], Time.deltaTime * 20f);
+            //wheelPos.x = 0f;
+            //wheelPos.z = 0f;
+            //wheelMeshes[i].position = wheelPos;
         }
     }
 
-    private void UpdateDriftState()
+    private void UpdateDriftState(float currentSpeed)
     {
-        if (_driftInput)
+        bool wasDrifting = (_driftDirection != 0);
+
+        if (_driftInput && Mathf.Abs(currentSpeed) > 10f)
         {
             if (_driftDirection == 0)
             {
                 if (_moveInput.x < -0.1f)
-                {
                     _driftDirection = -1;
-
-                }
                 else if (_moveInput.x > 0.1f)
                     _driftDirection = 1;
                 else
@@ -201,6 +247,32 @@ public class DriftingController : MonoBehaviour
         else
         {
             _driftDirection = 0;
+        }
+
+        if (wasDrifting && _driftDirection == 0)
+        {
+            if (_currentBoostChargeTime >= minDriftTimeForBoost)
+            {
+                float chargePercent = Mathf.Clamp01(_currentBoostChargeTime / maxDriftTimeForBoost);
+                _activeBoostTimer = maxBoostDuration * chargePercent;
+            }
+            _currentBoostChargeTime = 0f;
+        }
+    }
+
+    private void UpdateBoost()
+    {
+        if (_driftDirection != 0)
+        {
+            if (_currentBoostChargeTime < maxDriftTimeForBoost)
+            {
+                _currentBoostChargeTime += Time.fixedDeltaTime;
+            }
+        }
+
+        if (_activeBoostTimer > 0)
+        {
+            _activeBoostTimer -= Time.fixedDeltaTime;
         }
     }
 
@@ -221,21 +293,30 @@ public class DriftingController : MonoBehaviour
     {
         if (_cameraTransform == null) return;
 
-        float throttleInput = (_driftDirection != 0) ? 1f : _moveInput.y;
+        float throttleInput = (_driftDirection != 0 || _activeBoostTimer > 0) ? 1f : _moveInput.y;
         if (Mathf.Abs(throttleInput) < 0.01f) return;
 
-        if (Mathf.Abs(currentSpeed) >= maxSpeed && throttleInput > 0f) return;
+        float effectiveMaxSpeed = maxSpeed;
+        float effectiveAccel = acceleration;
+
+        if (_activeBoostTimer > 0)
+        {
+            effectiveMaxSpeed += (maxSpeed * boostPercentage);
+            effectiveAccel += (acceleration * boostPercentage);
+        }
+
+        if (Mathf.Abs(currentSpeed) >= effectiveMaxSpeed && throttleInput > 0f) return;
 
         Vector3 accelDir = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
 
-        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxSpeed);
-        float availableTorque = powerCurve.Evaluate(normalizedSpeed) * throttleInput * acceleration;
+        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / effectiveMaxSpeed);
+        float availableTorque = powerCurve.Evaluate(normalizedSpeed) * throttleInput * effectiveAccel;
 
         _rigidbody.AddForce(accelDir * availableTorque);
         Vector3 flatVelocity = new Vector3(_rigidbody.linearVelocity.x, 0f, _rigidbody.linearVelocity.z);
-        if (flatVelocity.magnitude > maxSpeed)
+        if (flatVelocity.magnitude > effectiveMaxSpeed)
         {
-            Vector3 clampedVelocity = flatVelocity.normalized * maxSpeed;
+            Vector3 clampedVelocity = flatVelocity.normalized * effectiveMaxSpeed;
             _rigidbody.linearVelocity = new Vector3(clampedVelocity.x, _rigidbody.linearVelocity.y, clampedVelocity.z);
         }
     }
@@ -244,17 +325,26 @@ public class DriftingController : MonoBehaviour
     {
         if (_cameraTransform == null) return;
 
-        float throttleInput = (_driftDirection != 0) ? 1f : _moveInput.y;
+        float throttleInput = (_driftDirection != 0 || _activeBoostTimer > 0) ? 1f : _moveInput.y;
         if (Mathf.Abs(throttleInput) < 0.01f) return;
+
+        float effectiveMaxSpeed = maxSpeed;
+        float effectiveAccel = acceleration;
+
+        if (_activeBoostTimer > 0)
+        {
+            effectiveMaxSpeed += (maxSpeed * boostPercentage);
+            effectiveAccel += (acceleration * boostPercentage);
+        }
 
         Vector3 accelDir = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
 
-        float targetSpeed = throttleInput * maxSpeed;
+        float targetSpeed = throttleInput * effectiveMaxSpeed;
         float speedDiff = targetSpeed - currentSpeed;
         float desiredAccel = speedDiff / Time.fixedDeltaTime;
 
-        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxSpeed);
-        float maxForceAvailable = powerCurve.Evaluate(normalizedSpeed) * acceleration;
+        float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / effectiveMaxSpeed);
+        float maxForceAvailable = powerCurve.Evaluate(normalizedSpeed) * effectiveAccel;
         float maxAccelForThisSpeed = maxForceAvailable / _rigidbody.mass;
 
         desiredAccel = Mathf.Clamp(desiredAccel, -maxAccelForThisSpeed, maxAccelForThisSpeed);
@@ -297,6 +387,7 @@ public class DriftingController : MonoBehaviour
 
         _rigidbody.AddForce(flatCamForward * desiredAccel, ForceMode.Acceleration);
     }
+
     private void AlignToCamera()
     {
         if (_cameraTransform == null) return;
@@ -306,18 +397,25 @@ public class DriftingController : MonoBehaviour
 
         if (_driftDirection != 0)
         {
-            float driftAngle = (baseDriftAngle * _driftDirection) + (_moveInput.x * driftSteerInfluence);
-            float clampedDriftAngle = Mathf.Clamp(driftAngle, minDriftOffset, maxDriftOffset);
-            camFwdFlat = Quaternion.AngleAxis(clampedDriftAngle, Vector3.up) * camFwdFlat;
+            float driftMagnitude = baseDriftAngle + (_moveInput.x * _driftDirection * driftSteerInfluence);
+            float clampedMagnitude = Mathf.Clamp(driftMagnitude, minDriftOffset, maxDriftOffset);
+
+            camFwdFlat = Quaternion.AngleAxis(clampedMagnitude * _driftDirection, Vector3.up) * camFwdFlat;
         }
 
         float angleOffset = Vector3.SignedAngle(carFwdFlat, camFwdFlat, Vector3.up) * Mathf.Deg2Rad;
         float angularVelAroundAxis = Vector3.Dot(_rigidbody.angularVelocity, Vector3.up);
+
+        _currentDriftOffset = angleOffset;
+
+        float currentSpinMagnitude = _rigidbody.angularVelocity.magnitude;
+        float crashSpinThreshold = 3.5f;
+        float clutchEngagement = 1f - Mathf.Clamp01(currentSpinMagnitude / crashSpinThreshold);
+
         float turnForce = (angleOffset * turnStrength) - (angularVelAroundAxis * turnDamper);
         float turnForceMag = Mathf.Clamp(turnForce, -maxAlignmentTorque, maxAlignmentTorque);
-        float uprightFactor = Mathf.Clamp01(Vector3.Dot(transform.forward, _cameraTransform.forward));
 
-        _rigidbody.AddTorque(Vector3.up * (turnForceMag * uprightFactor), ForceMode.Acceleration);
+        _rigidbody.AddTorque(Vector3.up * (turnForceMag * clutchEngagement), ForceMode.Acceleration);
     }
 
     private void HandleLateralSlip()
