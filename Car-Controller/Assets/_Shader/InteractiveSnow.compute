@@ -1,0 +1,42 @@
+#pragma kernel Init
+#pragma kernel FillBlack
+#pragma kernel DrawSpot
+
+RWTexture2D<float4> snowImage;
+float colorValueToAdd;
+float resolution;
+float xPos;
+float yPos;
+float spotSize;
+
+
+[numthreads(8, 8, 1)]
+void Init(uint3 id : SV_DispatchThreadID)
+{
+    snowImage[id.xy] += float4(colorValueToAdd, colorValueToAdd, colorValueToAdd, 0);
+}
+
+[numthreads(8, 8, 1)]
+void FillBlack(uint3 id : SV_DispatchThreadID)
+{
+    snowImage[id.xy] = float4(0.0, 0.0, 0.0, 1.0);
+}
+
+[numthreads(8, 8, 1)]
+void DrawSpot(uint3 id : SV_DispatchThreadID)
+{
+    float x = id.x / resolution;
+    float y = id.y / resolution;
+    
+    float dist = distance(float2(x, y), float2(xPos / resolution, yPos / resolution));
+    
+    if (dist < spotSize)
+    {
+        float intensity = 1.0 - (dist / spotSize);
+        
+        if (intensity > snowImage[id.xy].x)
+        {
+            snowImage[id.xy] = float4(intensity, intensity, intensity, 1.0);
+        }
+    }
+}

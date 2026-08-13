@@ -20,6 +20,8 @@ public class ArcadeController : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private Transform[] wheelMesh;
     [SerializeField] private TrailRenderer[] _wheelTrail;
+    [SerializeField] private Vector3 minWheelPos;
+    [SerializeField] private Vector3 maxWheelPos;
 
     [Header("Physics")]
     [SerializeField] private Vector3 centerOfMassOffset = new Vector3(0f, -0.5f, 0f);
@@ -64,7 +66,9 @@ public class ArcadeController : MonoBehaviour
 
     private float _currentSteerAngle;
     private float[] _wheelSpinAngles = new float[4];
-    private Vector3[] _wheelTargetPositions = new Vector3[4];
+
+    private float[] _wheelTargetDistances = new float[4];
+    private float[] _wheelCurrentDistances = new float[4];
 
     private float[] _wheelCompressions = new float[4];
     private bool[] _isGrounded = new bool[4];
@@ -80,6 +84,9 @@ public class ArcadeController : MonoBehaviour
 
         for (int i =  0; i < wheelMesh.Length; i++)
         {
+            _wheelTargetDistances[i] = restLength;
+            _wheelCurrentDistances[i] = restLength;
+
             TrailRenderer trail = wheelMesh[i].GetComponentInChildren<TrailRenderer>();
 
             if (trail != null)
@@ -112,6 +119,8 @@ public class ArcadeController : MonoBehaviour
         {
             Transform wheel = wheelPoints[i];
             RaycastHit hit;
+
+            float minLength = restLength - sprintTravel;
             float maxLength = restLength + sprintTravel;
 
             if (Physics.Raycast(wheel.position, -wheel.up, out hit, maxLength + wheelRadius, whatIsDrivable))
@@ -121,7 +130,7 @@ public class ArcadeController : MonoBehaviour
                 float currentSpringLength = hit.distance - wheelRadius;
                 _wheelCompressions[i] = Mathf.Clamp01((restLength - currentSpringLength) / sprintTravel);
 
-                _wheelTargetPositions[i] = hit.point + (wheel.up * wheelRadius);
+                _wheelTargetDistances[i] = Mathf.Clamp(currentSpringLength, minLength, maxLength);
 
                 ApplySuspension(i, wheel, hit);
                 ApplySteering(i, wheel, _wheelCompressions[i]);
@@ -149,7 +158,7 @@ public class ArcadeController : MonoBehaviour
                 _isGrounded[i] = false;
                 _wheelCompressions[i] = 0f;
 
-                _wheelTargetPositions[i] = wheel.position - (wheel.up * maxLength);
+                _wheelTargetDistances[i] = maxLength;
 
                 Debug.DrawLine(wheel.position, wheel.position + (wheelRadius + maxLength) * -wheel.up, Color.red);
             }
@@ -165,10 +174,12 @@ public class ArcadeController : MonoBehaviour
     {
         for (int i = 0; i < wheelMesh.Length; i++)
         {
+            // Spin visual
             float wheelForwardSpeed = Vector3.Dot(_rigidBody.GetPointVelocity(wheelPoints[i].position), wheelPoints[i].forward);
             _wheelSpinAngles[i] += (wheelForwardSpeed / wheelRadius) * Mathf.Rad2Deg * Time.deltaTime;
             wheelMesh[i].rotation = wheelPoints[i].rotation * Quaternion.Euler(_wheelSpinAngles[i], 0f, 0f);
-            wheelMesh[i].position = Vector3.Lerp(wheelMesh[i].position, _wheelTargetPositions[i], Time.deltaTime * 20f);
+            _wheelCurrentDistances[i] = Mathf.Lerp(_wheelCurrentDistances[i], _wheelTargetDistances[i], Time.deltaTime * 20f);
+            wheelMesh[i].position = wheelPoints[i].position - (wheelPoints[i].up * _wheelCurrentDistances[i]);
 
             _wheelTrail[i].emitting = IsDrifting;
         }

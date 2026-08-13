@@ -598,9 +598,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823262966504976447}
   serializedVersion: 5
-  m_Mass: 1500
+  m_Mass: 80
   m_LinearDamping: 0.05
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: -0.5, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -645,19 +645,19 @@ MonoBehaviour:
   - {fileID: 8535070652281085666}
   - {fileID: 6623705936044214671}
   _wheelTrail: []
-  centerOfMassOffset: {x: 0, y: -0.5, z: 0}
-  springStiffness: 20000
-  damperStiffness: 4430
-  restLength: 0.3
-  sprintTravel: 0.15
-  wheelRadius: 0.4
-  antiRollStiffness: 0
-  tireMass: 250
-  maxSteerAngle: 25
+  centerOfMassOffset: {x: 0, y: -0.45, z: -0.05}
+  springStiffness: 1500
+  damperStiffness: 80
+  restLength: 0.35
+  sprintTravel: 0.2
+  wheelRadius: 0.35
+  antiRollStiffness: 100
+  tireMass: 30
+  maxSteerAngle: 30
   highSpeedSteerLimit: 12
   steerSpeed: 5
-  steeringDragMitigation: 0.5
-  maxCorrectiveAccel: 200
+  steeringDragMitigation: 0.65
+  maxCorrectiveAccel: 120
   frontWheelTraction:
     serializedVersion: 2
     m_Curve:
@@ -671,13 +671,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.2970703
     - serializedVersion: 3
-      time: 0.35
-      value: 0.8
-      inSlope: -0.6167281
-      outSlope: -0.6167281
+      time: 0.31352612
+      value: 0.76489866
+      inSlope: -0.6027753
+      outSlope: -0.6027753
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.18964979
+      inWeight: 0.1589879
       outWeight: 0.5666169
     - serializedVersion: 3
       time: 1
@@ -715,20 +715,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.2
-      inSlope: -0.24841917
-      outSlope: -0.24841917
+      inSlope: -0.24467108
+      outSlope: -0.24467108
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.11432922
+      inWeight: 0.1361788
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxLateralSlip: 10
-  driftThreshold: 3
-  maxSpeed: 45
-  acceleration: 2500
-  deceleration: 1500
+  driftThreshold: 5
+  maxSpeed: 30
+  acceleration: 500
+  deceleration: 300
   powerCurve:
     serializedVersion: 2
     m_Curve:
@@ -744,29 +744,38 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.2
       value: 1
-      inSlope: -0.004944892
-      outSlope: -0.004944892
+      inSlope: -0.12981588
+      outSlope: -0.12981588
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.7428572
+      outWeight: 0.11382115
     - serializedVersion: 3
-      time: 0.8
-      value: 1
-      inSlope: -0.0071543185
-      outSlope: -0.0071543185
+      time: 0.75425416
+      value: 0.9960022
+      inSlope: 0.092940696
+      outSlope: 0.092940696
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.6095237
-      outWeight: 0.8989454
+      inWeight: 0.23069103
+      outWeight: 0.4664636
+    - serializedVersion: 3
+      time: 0.84385556
+      value: 0.52076113
+      inSlope: -0.26744077
+      outSlope: -0.26744077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5021886
     - serializedVersion: 3
       time: 1
       value: 0.3
-      inSlope: -9.149465
-      outSlope: -9.149465
+      inSlope: -0.39506707
+      outSlope: -0.39506707
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.049999956
+      inWeight: 0.632622
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
