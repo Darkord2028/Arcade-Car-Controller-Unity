@@ -270,4 +270,13 @@ public class ArcadeController : MonoBehaviour
 
         _rigidBody.AddForceAtPosition(wheel.forward * brakeForce, wheel.position);
     }
+
+    #region Input Methods
+
+    public void OnMoveInput(InputAction.CallbackContext context)
+    {
+        _moveInput = context.ReadValue<Vector2>();
+    }
+
+    #endregion
 }

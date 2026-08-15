@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalSnowManager : MonoBehaviour
@@ -15,6 +16,10 @@ public class GlobalSnowManager : MonoBehaviour
     [SerializeField] private float fillRate = 0.02f;
     [SerializeField] private float updateInterval = 0.1f;
 
+    [Header("Snow Mesh")]
+    [SerializeField] private Transform snowMeshParent;
+    [SerializeField] private float meshBoundingExpansionAmount;
+
     private int _fillBlackKernel;
     private int _fillSnowKernel;
 
@@ -25,6 +30,7 @@ public class GlobalSnowManager : MonoBehaviour
 
     private void Awake()
     {
+        ExpandBoundingBoxOfSnowPlanes();
         InitializeRenderTexture();
         SetGlobalShaderVariables();
 
@@ -45,6 +51,26 @@ public class GlobalSnowManager : MonoBehaviour
         {
             _timer = 0f;
             FillSnowLayer();
+        }
+    }
+
+    private void ExpandBoundingBoxOfSnowPlanes()
+    {
+        MeshFilter[] meshFilters = snowMeshParent.GetComponentsInChildren<MeshFilter>();
+        HashSet<Mesh> processedMeshes = new HashSet<Mesh>();
+
+        foreach (MeshFilter filter in meshFilters)
+        {
+            Mesh sharedMesh = filter.sharedMesh;
+
+            if (sharedMesh != null && !processedMeshes.Contains(sharedMesh))
+            {
+                Bounds bounds = sharedMesh.bounds;
+                bounds.Expand(meshBoundingExpansionAmount);
+                sharedMesh.bounds = bounds;
+
+                processedMeshes.Add(sharedMesh);
+            }
         }
     }
 

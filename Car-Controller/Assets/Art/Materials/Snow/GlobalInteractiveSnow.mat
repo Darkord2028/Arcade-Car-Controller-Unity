@@ -55,12 +55,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CellDensity: 20
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowScale: 1500
+    - _SnowScale: 5000
     - _SnowWorldSize: 500
-    - _VertexOffset: 0.25
+    - _VertexOffset: 0.1
+    - _macroScale: 1500
+    - _microScale: 1000
     m_Colors:
-    - _SnowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SnowColor: {r: 0.6002349, g: 0.98490566, b: 0.9745721, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
