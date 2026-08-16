@@ -20,8 +20,6 @@ public class ArcadeController : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private Transform[] wheelMesh;
     [SerializeField] private TrailRenderer[] _wheelTrail;
-    [SerializeField] private Vector3 minWheelPos;
-    [SerializeField] private Vector3 maxWheelPos;
 
     [Header("Physics")]
     [SerializeField] private Vector3 centerOfMassOffset = new Vector3(0f, -0.5f, 0f);
@@ -61,8 +59,12 @@ public class ArcadeController : MonoBehaviour
     public bool IsDrifting { get; private set; }
 
     private Rigidbody _rigidBody;
-
+    private RaceParticipant _raceParticipant;
     private GameObject _wheelTrailParent;
+
+    private RaceManager _raceManager;
+
+    private bool canDrive = false;
 
     private float _currentSteerAngle;
     private float[] _wheelSpinAngles = new float[4];
@@ -73,14 +75,23 @@ public class ArcadeController : MonoBehaviour
     private float[] _wheelCompressions = new float[4];
     private bool[] _isGrounded = new bool[4];
 
+    private Vector3 _spawnPos;
+    private Quaternion _spawnRot;
+
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
         _rigidBody.centerOfMass = centerOfMassOffset;
+        _raceParticipant = GetComponent<RaceParticipant>();
+
+        _raceManager = RaceManager.Instance;
 
         _wheelTrail = new TrailRenderer[wheelMesh.Length];
         _wheelTrailParent = new GameObject("WheelTrails");
         _wheelTrailParent.transform.parent = transform;
+
+        _spawnPos = transform.position;
+        _spawnRot = transform.rotation;
 
         for (int i =  0; i < wheelMesh.Length; i++)
         {
@@ -95,6 +106,15 @@ public class ArcadeController : MonoBehaviour
                 _wheelTrail[i].transform.SetParent(_wheelTrailParent.transform);
                 _wheelTrail[i].emitting = false;
             }
+        }
+
+        if (_raceManager != null)
+        {
+            _raceManager.OnRaceStart += () => canDrive = true;
+        }
+        else
+        {
+            canDrive = true;
         }
     }
 
@@ -275,7 +295,83 @@ public class ArcadeController : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        _moveInput = context.ReadValue<Vector2>();
+        if (canDrive)
+        {
+            _moveInput = context.ReadValue<Vector2>();
+        }
+        else
+        {
+            _moveInput = Vector2.zero;
+        }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void TeleportTo(Vector3 position, Quaternion rotation)
+    {
+        _rigidBody.linearVelocity = Vector3.zero;
+        _rigidBody.angularVelocity = Vector3.zero;
+
+        _rigidBody.position = position;
+        _rigidBody.rotation = rotation;
+        transform.position = position;
+        transform.rotation = rotation;
+
+        _currentSteerAngle = 0f;
+
+        for (int i = 0; i < wheelPoints.Length; i++)
+        {
+            _wheelTargetDistances[i] = restLength;
+            _wheelCurrentDistances[i] = restLength;
+
+            if (wheelMesh[i] != null)
+            {
+                wheelMesh[i].position = wheelPoints[i].position - (wheelPoints[i].up * restLength);
+            }
+            if (_wheelTrail[i] != null)
+            {
+                _wheelTrail[i].Clear();
+            }
+        }
+    }
+
+    public void TeleportToLastCheckPoint()
+    {
+        _rigidBody.linearVelocity = Vector3.zero;
+        _rigidBody.angularVelocity = Vector3.zero;
+
+        Vector3 position = _spawnPos;
+        Quaternion rotation = _spawnRot;
+
+        if (_raceParticipant != null && _raceParticipant.CurrentCheckpoint != 0)
+        {
+            position = _raceParticipant.LastCheckpointPosition;
+            rotation = _raceParticipant.LastCheckpointRotation;
+        }
+
+        _rigidBody.position = position;
+        _rigidBody.rotation = rotation;
+        transform.position = position;
+        transform.rotation = rotation;
+
+        _currentSteerAngle = 0f;
+
+        for (int i = 0; i < wheelPoints.Length; i++)
+        {
+            _wheelTargetDistances[i] = restLength;
+            _wheelCurrentDistances[i] = restLength;
+
+            if (wheelMesh[i] != null)
+            {
+                wheelMesh[i].position = wheelPoints[i].position - (wheelPoints[i].up * restLength);
+            }
+            if (_wheelTrail[i] != null)
+            {
+                _wheelTrail[i].Clear();
+            }
+        }
     }
 
     #endregion

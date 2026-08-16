@@ -1,0 +1,10 @@
+# ninja log v5
+27	3397	8085422084610995	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	1667a2abac815e59
+36	3419	8085422084707658	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e8ec30bd1a81d84f
+1	3423	8085422084778327	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	c0205ebd93f6d515
+78	3428	8085422085052756	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b562de257dca52c4
+18	3445	8085422085267146	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	755d936e5e90ee62
+62	3687	8085422087770689	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c7b80b69a318682
+48	3750	8085422088371500	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a05e3b02942e1a5e
+10	3881	8085422089713070	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	fbe9cd497fe9f52f
+3882	4074	8085422091688545	C:/UnityProjects/Arcade-Car-Controller/Arcade-Car-Controller-Unity/Car-Controller/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/pqg711m4/obj/arm64-v8a/libgame.so	9c542bcc8c4f493a

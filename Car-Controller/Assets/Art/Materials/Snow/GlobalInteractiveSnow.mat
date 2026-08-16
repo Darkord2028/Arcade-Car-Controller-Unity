@@ -60,7 +60,7 @@ Material:
     - _QueueOffset: 0
     - _SnowScale: 5000
     - _SnowWorldSize: 500
-    - _VertexOffset: 0.1
+    - _VertexOffset: 0
     - _macroScale: 1500
     - _microScale: 1000
     m_Colors:

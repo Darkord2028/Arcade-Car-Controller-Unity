@@ -1,0 +1,2 @@
+C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
