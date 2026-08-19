@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum DriveTrain
 {
@@ -303,6 +304,12 @@ public class ArcadeController : MonoBehaviour
         {
             _moveInput = Vector2.zero;
         }
+    }
+
+    public void OnRestartInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion

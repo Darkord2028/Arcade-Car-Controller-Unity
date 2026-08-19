@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GhostPlayer : MonoBehaviour
 {
+    [Header("Config")]
+    public string playerName = "Jack";
+
     [Header("Ghost Asset")]
     public GhostRunData_SO ghostData;
 
@@ -11,20 +14,28 @@ public class GhostPlayer : MonoBehaviour
     private float _playbackTime;
     private int _currentIndex = 0;
     public bool isPlaying { get; private set; }
+    public float TotalTime { get { return ghostData.totalTime; } }
+
+    private RaceManager _raceManager;
+
+    private void Awake()
+    {
+        _raceManager = RaceManager.Instance;
+    }
 
     void Start()
     {
-        if (RaceManager.Instance != null)
+        if (_raceManager != null)
         {
-            RaceManager.Instance.OnRaceStart += StartPlayback;
+            _raceManager.OnRaceStart += StartPlayback;
         }
     }
 
     private void OnDestroy()
     {
-        if (RaceManager.Instance != null)
+        if (_raceManager != null)
         {
-            RaceManager.Instance.OnRaceStart -= StartPlayback;
+            _raceManager.OnRaceStart -= StartPlayback;
         }
     }
 
@@ -43,19 +54,21 @@ public class GhostPlayer : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying) return;
+        if (!isPlaying || ghostData == null || ghostData.frames.Count < 2) return;
 
         _playbackTime += Time.deltaTime;
 
-        if (_currentIndex < ghostData.frames.Count - 2)
+        while (_currentIndex < ghostData.frames.Count - 1 && _playbackTime >= ghostData.frames[_currentIndex + 1].time)
         {
-            if (_playbackTime >= ghostData.frames[_currentIndex + 1].time)
-            {
-                _currentIndex++;
-            }
+            _currentIndex++;
         }
-        else
+
+        if (_currentIndex >= ghostData.frames.Count - 1)
         {
+            transform.position = ghostData.frames[ghostData.frames.Count - 1].position;
+            transform.rotation = ghostData.frames[ghostData.frames.Count - 1].rotation;
+
+            foreach (var trail in driftTrails) { if (trail != null) trail.emitting = false; }
             isPlaying = false;
             return;
         }
@@ -63,7 +76,8 @@ public class GhostPlayer : MonoBehaviour
         GhostFrame frameA = ghostData.frames[_currentIndex];
         GhostFrame frameB = ghostData.frames[_currentIndex + 1];
 
-        float interpolationFactor = (_playbackTime - frameA.time) / (frameB.time - frameA.time);
+        float timeDiff = frameB.time - frameA.time;
+        float interpolationFactor = (timeDiff > 0f) ? (_playbackTime - frameA.time) / timeDiff : 1f;
 
         transform.position = Vector3.Lerp(frameA.position, frameB.position, interpolationFactor);
         transform.rotation = Quaternion.Slerp(frameA.rotation, frameB.rotation, interpolationFactor);

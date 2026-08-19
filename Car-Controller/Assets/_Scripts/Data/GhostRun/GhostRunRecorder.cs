@@ -11,7 +11,7 @@ public class GhostRunRecorder : MonoBehaviour
     public float recordInterval = 0.1f;
 
     private ArcadeController _carController;
-    private RaceParticipant _raceParticipant;
+    private RaceManager _raceManager;
     private GhostRunData_SO _currentRun;
     private float _timer;
     private float _recordingTime;
@@ -21,11 +21,10 @@ public class GhostRunRecorder : MonoBehaviour
     void Start()
     {
         _carController = GetComponent<ArcadeController>();
-        _raceParticipant = GetComponent<RaceParticipant>();
 
-        if (_raceParticipant != null)
+        if (_raceManager != null)
         {
-            _raceParticipant.OnRaceFinished += StopAndSaveRecording;
+            _raceManager.OnRaceFinished += StopAndSaveRecording;
         }
 
         if (RaceManager.Instance != null)
@@ -36,9 +35,9 @@ public class GhostRunRecorder : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_raceParticipant != null)
+        if (_raceManager != null)
         {
-            _raceParticipant.OnRaceFinished -= StopAndSaveRecording;
+            _raceManager.OnRaceFinished -= StopAndSaveRecording;
         }
         if (RaceManager.Instance != null)
         {
@@ -61,6 +60,11 @@ public class GhostRunRecorder : MonoBehaviour
 
     public void StopAndSaveRecording()
     {
+        if (isRecording)
+        {
+            RecordFrame();
+        }
+
         isRecording = false;
         _currentRun.totalTime = _recordingTime;
 

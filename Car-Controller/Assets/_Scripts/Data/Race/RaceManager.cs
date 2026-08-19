@@ -24,13 +24,19 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Transform checkpointParent;
     [SerializeField] private List<Checkpoint> trackCheckpoints = new List<Checkpoint>();
 
-    public int TotalCheckPoints { get { return trackCheckpoints.Count; } set { value = trackCheckpoints.Count; } }
-    public int TotalLaps { get { return totalLaps; } set { value = totalLaps; } }
+    private float _timer;
+
+    public int TotalCheckPoints => trackCheckpoints.Count;
+    public int TotalLaps => totalLaps;
+    public float TotalTime => _timer;
 
     public RaceState CurrentState { get; private set; } = RaceState.PreRace;
 
     public event Action<int> OnCountdownTick;
     public event Action OnRaceStart;
+    public event Action OnRaceFinished;
+    public event Action<int> OnPlayerWin;
+    public event Action<int> OnPlayerLost;
 
     private void Awake()
     {
@@ -43,6 +49,14 @@ public class RaceManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(RaceCountdownRoutine());
+    }
+
+    private void Update()
+    {
+        if (CurrentState == RaceState.Racing)
+        {
+            _timer += Time.deltaTime;
+        }
     }
 
     private void SetupCheckpoints()
@@ -76,5 +90,25 @@ public class RaceManager : MonoBehaviour
         CurrentState = RaceState.Racing;
         OnRaceStart?.Invoke();
         Debug.Log("GO!");
+    }
+
+    public void HandleRaceFinished()
+    {
+        if (CurrentState != RaceState.Racing)
+            return;
+
+        CurrentState = RaceState.Finished;
+
+        OnRaceFinished?.Invoke();
+    }
+
+    public void HandlePlayerWin(int playerPosition)
+    {
+        OnPlayerWin?.Invoke(playerPosition);
+    }
+
+    public void HandlePlayerLost(int playerPosition)
+    {
+        OnPlayerLost?.Invoke(playerPosition);
     }
 }

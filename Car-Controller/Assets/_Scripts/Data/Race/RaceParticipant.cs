@@ -12,7 +12,6 @@ public class RaceParticipant : MonoBehaviour
 
     public event Action<int> OnCheckpointPassed;
     public event Action<int> OnLapCompleted;
-    public event Action OnRaceFinished;
     public event Action OnWrongDirection;
 
     public int CurrentCheckpoint { get { return targetCheckpointIndex; } set { targetCheckpointIndex = value; } }
@@ -70,7 +69,7 @@ public class RaceParticipant : MonoBehaviour
         if (currentLap >= RaceManager.Instance.TotalLaps)
         {
             hasFinishedRace = true;
-            OnRaceFinished?.Invoke();
+            RaceManager.Instance.HandleRaceFinished();
             Debug.Log("Race Finished! You win!");
         }
         else

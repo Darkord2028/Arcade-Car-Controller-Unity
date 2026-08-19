@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Simulator
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43.2
+    y: 0
     width: 1536
     height: 36
   m_SerializedDataModeController:
@@ -419,9 +419,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79.200005
+    y: 36
     width: 1536
-    height: 692.8
+    height: 716.8
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_SerializedViewNames:
   - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\PlayModeViewStates\68ee9b83fbd57b747ba66648e1c1633f
+  - C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\PlayModeViewStates\1c99abca100027242a63342ce0792ca0
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
       height: 864
     m_MinimalGUI: 1
   m_defaultScale: 0.7775463
-  m_LastWindowPixelSize: {x: 1920, y: 866}
+  m_LastWindowPixelSize: {x: 1536, y: 692.8}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000

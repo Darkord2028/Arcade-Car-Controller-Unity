@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\ghostrun\\ghostplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\ghostrun\\ghostplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\ghostrun\\ghostrunrecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\ghostrun\\ghostrunrecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\carcontrollers\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\carcontrollers\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\carcontrollers\\arcadecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\data\\race\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\data\\race\\raceresultsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\race\\raceresultsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\race\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\race\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\data\\race\\raceparticipant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\race\\raceparticipant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|c:\\unityprojects\\arcade-car-controller\\arcade-car-controller-unity\\car-controller\\assets\\_scripts\\data\\race\\racerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\race\\racerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\ghostrun\\ghostplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\ghostrun\\ghostplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\ghostrun\\ghostrundata_so.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\ghostrun\\ghostrundata_so.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\ghostrun\\ghostframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\ghostrun\\ghostframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\assets\\_scripts\\data\\race\\raceparticipant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548846F1-8F4A-427B-23AC-2C44F07B14E9}|Assembly-CSharp.csproj|solutionrelative:assets\\_scripts\\data\\race\\raceparticipant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,39 +42,39 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ArcadeController.cs",
-              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
-              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
-              "ViewState": "AgIAAB8BAAAAAAAAAAAUwC8BAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T12:21:05.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RaceParticipant.cs",
-              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
-              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowEUAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T12:17:39.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "RacerInfo.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RacerInfo.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\Race\\RacerInfo.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RacerInfo.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Data\\Race\\RacerInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-16T21:10:05.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RaceResultsManager.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceResultsManager.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\Race\\RaceResultsManager.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceResultsManager.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Data\\Race\\RaceResultsManager.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAcwGMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-16T18:38:52.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RaceManager.cs",
               "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\Race\\RaceManager.cs",
               "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceManager.cs",
               "RelativeToolTip": "Assets\\_Scripts\\Data\\Race\\RaceManager.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAUwEIAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwCYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-16T12:16:11.331Z",
               "EditorCaption": ""
@@ -82,40 +82,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GhostPlayer.cs",
-              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
-              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAIwBUAAAAAAAAAAAAAAA==",
+              "Title": "ArcadeController.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\CarControllers\\ArcadeController.cs",
+              "ViewState": "AgIAACABAAAAAAAAAAAUwDYBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T08:22:51.815Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GhostRunRecorder.cs",
-              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostRunRecorder.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\GhostRun\\GhostRunRecorder.cs",
-              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostRunRecorder.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Data\\GhostRun\\GhostRunRecorder.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwCgAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T08:18:01.727Z",
+              "WhenOpened": "2026-08-16T12:21:05.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GhostFrame.cs",
-              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostFrame.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\GhostRun\\GhostFrame.cs",
-              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostFrame.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Data\\GhostRun\\GhostFrame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "RaceParticipant.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Data\\Race\\RaceParticipant.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-16T08:16:27.677Z",
+              "WhenOpened": "2026-08-16T12:17:39.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GhostPlayer.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
+              "ToolTip": "C:\\UnityProjects\\Arcade-Car-Controller\\Arcade-Car-Controller-Unity\\Car-Controller\\Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Data\\GhostRun\\GhostPlayer.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAcwEQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-16T08:22:51.815Z",
               "EditorCaption": ""
             },
             {
