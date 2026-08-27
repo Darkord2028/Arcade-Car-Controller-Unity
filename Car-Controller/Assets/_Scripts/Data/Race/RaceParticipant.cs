@@ -15,6 +15,7 @@ public class RaceParticipant : MonoBehaviour
     public event Action OnWrongDirection;
 
     public int CurrentCheckpoint { get { return targetCheckpointIndex; } set { targetCheckpointIndex = value; } }
+    public int CurrentLap { get { return currentLap; } }
     public Vector3 LastCheckpointPosition { get; private set; }
     public Quaternion LastCheckpointRotation { get; private set; }
 
@@ -70,7 +71,6 @@ public class RaceParticipant : MonoBehaviour
         {
             hasFinishedRace = true;
             RaceManager.Instance.HandleRaceFinished();
-            Debug.Log("Race Finished! You win!");
         }
         else
         {

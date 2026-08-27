@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 23405
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -34,16 +34,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13974, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
-  m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.DeviceSimulation.SimulatorWindow
-  m_MinSize: {x: 200, y: 200}
+  m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.GameView
+  m_MinSize: {x: 50, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Simulator
-    m_Image: {fileID: 3038311277492192215, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Game
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
-    m_TextWithWhitespace: "Simulator\u200B"
+    m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
     x: 265.6
@@ -64,42 +64,72 @@ MonoBehaviour:
     m_OverlaysVisible: 1
     m_DynamicPanelBehavior: 0
   m_SerializedViewNames:
-  - UnityEditor.GameView
+  - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\PlayModeViewStates\8a344e09fbd5d6b44bbecf9f4d3fc6f0
-  m_PlayModeViewName: Device Simulator
+  - C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller\Library\PlayModeViewStates\1c99abca100027242a63342ce0792ca0
+  m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
-  m_ClearColor: {r: 0, g: 0, b: 0, a: 1}
-  m_TargetSize: {x: 2338, y: 1080}
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetSize: {x: 1920, y: 1080}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
   m_EnterPlayModeBehavior: 2
   m_UseMipMap: 0
-  m_SimulatorState:
-    controlPanelVisible: 0
-    controlPanelWidth: 0
-    controlPanelFoldoutKeys:
-    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
-    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
-    controlPanelFoldoutValues: 0000
-    pluginNames:
-    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
-    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
-    - UnityEngine.InputSystem.Editor.InputSystemPlugin
-    pluginStates:
-    - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
-    - '{}'
-    - '{}'
-    scale: 34
-    fitToScreenEnabled: 0
-    rotationDegree: 90
-    highlightSafeAreaEnabled: 0
-    friendlyName: iOS Notch Device Small (1080x2338)
-    screenIndex: 0
-    networkReachability: 1
-    systemLanguage: 10
+  m_VSyncEnabled: 0
+  m_Gizmos: 0
+  m_Stats: 1
+  m_SelectedSizes: 03000000000000000000000006000000000000000000000000000000000000000000000000000000
+  m_ZoomArea:
+    m_HRangeLocked: 0
+    m_VRangeLocked: 0
+    hZoomLockedByDefault: 0
+    vZoomLockedByDefault: 0
+    m_HBaseRangeMin: -768
+    m_HBaseRangeMax: 768
+    m_VBaseRangeMin: -432
+    m_VBaseRangeMax: 432
+    m_HAllowExceedBaseRangeMin: 1
+    m_HAllowExceedBaseRangeMax: 1
+    m_VAllowExceedBaseRangeMin: 1
+    m_VAllowExceedBaseRangeMax: 1
+    m_ScaleWithWindow: 0
+    m_HSlider: 0
+    m_VSlider: 0
+    m_IgnoreScrollWheelUntilClicked: 0
+    m_EnableMouseInput: 0
+    m_EnableSliderZoomHorizontal: 0
+    m_EnableSliderZoomVertical: 0
+    m_UniformScale: 1
+    m_UpDirection: 1
+    m_DrawArea:
+      serializedVersion: 2
+      x: 0
+      y: 21
+      width: 912.4
+      height: 433.8
+    m_Scale: {x: 0.5020833, y: 0.5020833}
+    m_Translation: {x: 456.2, y: 216.9}
+    m_MarginLeft: 0
+    m_MarginRight: 0
+    m_MarginTop: 0
+    m_MarginBottom: 0
+    m_LastShownAreaInsideMargins:
+      serializedVersion: 2
+      x: -908.6142
+      y: -432
+      width: 1817.2284
+      height: 864
+    m_MinimalGUI: 1
+  m_defaultScale: 0.5020833
+  m_LastWindowPixelSize: {x: 1140.5, y: 568.5}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 00000000000000000000
+  m_XRRenderMode: 0
+  m_RenderTexture: {fileID: 0}
+  m_showToolbar: 1
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 54
+  controlID: 23406
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -150,7 +180,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 55
+  controlID: 23407
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -176,7 +206,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 56
+  controlID: 23408
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -197,8 +227,8 @@ MonoBehaviour:
     y: 0
     width: 265.6
     height: 480.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 7}
@@ -245,11 +275,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: []
+      m_SelectedIDs:
+      - m_Data: -129822
       m_LastClickedID:
-        m_Data: 0
+        m_Data: -129822
       m_ExpandedIDs:
+      - m_Data: -129666
+      - m_Data: -127552
+      - m_Data: -121690
+      - m_Data: -18398
+      - m_Data: -16416
+      - m_Data: -9312
+      - m_Data: -6774
+      - m_Data: -6512
+      - m_Data: -5844
+      - m_Data: -5728
+      - m_Data: -4118
+      - m_Data: -3908
       - m_Data: -1342
+      - m_Data: 50654
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -285,7 +329,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SimulatorWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -294,7 +338,7 @@ MonoBehaviour:
     y: 0
     width: 914.4
     height: 480.8
-  m_MinSize: {x: 202, y: 226}
+  m_MinSize: {x: 52, y: 76}
   m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 2}
   m_Panes:
@@ -303,7 +347,7 @@ MonoBehaviour:
   - {fileID: 11}
   - {fileID: 2}
   m_Selected: 3
-  m_LastSelected: 3
+  m_LastSelected: 0
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -325,9 +369,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 271.2
+    x: 265.6
     y: 79.200005
-    width: 933.2
+    width: 912.4
     height: 454.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1025,9 +1069,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -0.00012207031, y: 0.6515589, z: 7.3471537}
+    m_Target: {x: 66.13884, y: -57.340378, z: 46.27617}
     speed: 2
-    m_Value: {x: -0.00012207031, y: 0.6515589, z: 7.3471537}
+    m_Value: {x: 66.13884, y: -57.340378, z: 46.27617}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1073,13 +1117,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.2910133, y: -0.4541102, z: 0.15980929, w: -0.8268724}
+    m_Target: {x: 0.2747405, y: 0.5200162, z: -0.18126203, w: 0.7882008}
     speed: 2
-    m_Value: {x: -0.2909898, y: -0.45407352, z: 0.15979637, w: -0.8268056}
+    m_Value: {x: 0.27473837, y: 0.52001214, z: -0.18126063, w: 0.7881947}
   m_Size:
-    m_Target: 7.6905203
+    m_Target: 70.08392
     speed: 2
-    m_Value: 7.6905203
+    m_Value: 70.08392
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1261,10 +1305,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "GlobalInteractiveSnow\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 253.6
+    x: 265.6
     y: 79.200005
-    width: 870.80005
-    height: 441.2
+    width: 912.4
+    height: 454.8
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1288,7 +1332,6 @@ MonoBehaviour:
     },\n        {\n            \"m_Id\": \"b1ef12677e5a4b97ae3b09cac127d654\"\n       
     },\n        {\n            \"m_Id\": \"726c6a7190544da19fb8d52321e75240\"\n       
     },\n        {\n            \"m_Id\": \"fc7232180603407a8d902da985f8327c\"\n       
-    },\n        {\n            \"m_Id\": \"f97cf4f7c75949acae75495fbf07599a\"\n       
     }\n    ],\n    \"m_Keywords\": [],\n    \"m_Dropdowns\": [],\n    \"m_CategoryData\":
     [\n        {\n            \"m_Id\": \"73ded7aebb22457aada7b588c8b88abd\"\n       
     }\n    ],\n    \"m_Nodes\": [\n        {\n            \"m_Id\": \"0c718a9fdc54402c910c9fd37fc60f56\"\n       
@@ -1965,7 +2008,7 @@ MonoBehaviour:
     false,\n    \"m_DefaultDecalBlending\": true,\n    \"m_DefaultSSAO\": true\n}\n\n{\n   
     \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.GroupData\",\n   
     \"m_ObjectId\": \"6e052c2948ea4b0792ab79c23bd24d0c\",\n    \"m_Title\": \"World
-    UV\",\n    \"m_Position\": {\n        \"x\": -3465.60009765625,\n        \"y\":
+    UV\",\n    \"m_Position\": {\n        \"x\": -3465.600341796875,\n        \"y\":
     599.2000122070313\n    }\n}\n\n{\n    \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.Vector1MaterialSlot\",\n   
     \"m_ObjectId\": \"6e05fce285fc4a54b16d9385208ba8e4\",\n    \"m_Id\": 2,\n   
     \"m_DisplayName\": \"G\",\n    \"m_SlotType\": 1,\n    \"m_Hidden\": false,\n   
@@ -2016,7 +2059,6 @@ MonoBehaviour:
     },\n        {\n            \"m_Id\": \"726c6a7190544da19fb8d52321e75240\"\n       
     },\n        {\n            \"m_Id\": \"fc7232180603407a8d902da985f8327c\"\n       
     },\n        {\n            \"m_Id\": \"a855887bb3a5461dbec2a0c394e2ee77\"\n       
-    },\n        {\n            \"m_Id\": \"f97cf4f7c75949acae75495fbf07599a\"\n       
     }\n    ]\n}\n\n{\n    \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.DynamicValueMaterialSlot\",\n   
     \"m_ObjectId\": \"75943cbe07c8487db824d904c73f5dff\",\n    \"m_Id\": 1,\n   
     \"m_DisplayName\": \"B\",\n    \"m_SlotType\": 0,\n    \"m_Hidden\": false,\n   
@@ -2221,8 +2263,8 @@ MonoBehaviour:
     0,\n    \"m_CSharpEnumString\": \"\",\n    \"m_EnumNames\": [\n        \"Default\"\n   
     ],\n    \"m_EnumValues\": [\n        0\n    ]\n}\n\n{\n    \"m_SGVersion\": 0,\n   
     \"m_Type\": \"UnityEditor.ShaderGraph.GroupData\",\n    \"m_ObjectId\": \"aa943b2448f944e28b2c27369ea4c7f8\",\n   
-    \"m_Title\": \"World UV\",\n    \"m_Position\": {\n        \"x\": -3469.60009765625,\n       
-    \"y\": 131.199951171875\n    }\n}\n\n{\n    \"m_SGVersion\": 0,\n    \"m_Type\":
+    \"m_Title\": \"World UV\",\n    \"m_Position\": {\n        \"x\": -3469.600341796875,\n       
+    \"y\": 131.2000274658203\n    }\n}\n\n{\n    \"m_SGVersion\": 0,\n    \"m_Type\":
     \"UnityEditor.ShaderGraph.Vector1MaterialSlot\",\n    \"m_ObjectId\": \"aaea80e7d41f4b1a802f0538b5dd9509\",\n   
     \"m_Id\": 7,\n    \"m_DisplayName\": \"B\",\n    \"m_SlotType\": 1,\n    \"m_Hidden\":
     false,\n    \"m_ShaderOutputName\": \"B\",\n    \"m_StageCapability\": 3,\n   
@@ -2558,31 +2600,16 @@ MonoBehaviour:
     \"m_ShaderOutputName\": \"RG\",\n    \"m_StageCapability\": 3,\n    \"m_Value\":
     {\n        \"x\": 0.0,\n        \"y\": 0.0\n    },\n    \"m_DefaultValue\": {\n       
     \"x\": 0.0,\n        \"y\": 0.0\n    },\n    \"m_Labels\": []\n}\n\n{\n    \"m_SGVersion\":
-    1,\n    \"m_Type\": \"UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty\",\n   
-    \"m_ObjectId\": \"f97cf4f7c75949acae75495fbf07599a\",\n    \"m_Guid\": {\n       
-    \"m_GuidSerialized\": \"9b8f0008-ee56-4333-92ed-a14a572a450c\"\n    },\n    \"promotedFromAssetID\":
-    \"\",\n    \"promotedFromCategoryName\": \"\",\n    \"promotedOrdering\": -1,\n   
-    \"m_Name\": \"CellDensity\",\n    \"m_DefaultRefNameVersion\": 1,\n    \"m_RefNameGeneratedByDisplayName\":
-    \"CellDensity\",\n    \"m_DefaultReferenceName\": \"_CellDensity\",\n    \"m_OverrideReferenceName\":
-    \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_UseCustomSlotLabel\":
-    false,\n    \"m_CustomSlotLabel\": \"\",\n    \"m_DismissedVersion\": 0,\n   
-    \"m_Precision\": 0,\n    \"overrideHLSLDeclaration\": false,\n    \"hlslDeclarationOverride\":
-    0,\n    \"m_Hidden\": false,\n    \"m_PerRendererData\": false,\n    \"m_customAttributes\":
-    [],\n    \"m_Value\": 20.0,\n    \"m_FloatType\": 0,\n    \"m_LiteralFloatMode\":
-    false,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n   
-    },\n    \"m_SliderType\": 0,\n    \"m_SliderPower\": 3.0,\n    \"m_EnumType\":
-    0,\n    \"m_CSharpEnumString\": \"\",\n    \"m_EnumNames\": [\n        \"Default\"\n   
-    ],\n    \"m_EnumValues\": [\n        0\n    ]\n}\n\n{\n    \"m_SGVersion\": 0,\n   
-    \"m_Type\": \"UnityEditor.ShaderGraph.DynamicVectorMaterialSlot\",\n    \"m_ObjectId\":
-    \"faca42f7bc774955892646ade14a4860\",\n    \"m_Id\": 2,\n    \"m_DisplayName\":
-    \"Out\",\n    \"m_SlotType\": 1,\n    \"m_Hidden\": false,\n    \"m_ShaderOutputName\":
-    \"Out\",\n    \"m_StageCapability\": 3,\n    \"m_Value\": {\n        \"x\": 0.0,\n       
-    \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    },\n    \"m_DefaultValue\":
+    0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.DynamicVectorMaterialSlot\",\n   
+    \"m_ObjectId\": \"faca42f7bc774955892646ade14a4860\",\n    \"m_Id\": 2,\n   
+    \"m_DisplayName\": \"Out\",\n    \"m_SlotType\": 1,\n    \"m_Hidden\": false,\n   
+    \"m_ShaderOutputName\": \"Out\",\n    \"m_StageCapability\": 3,\n    \"m_Value\":
     {\n        \"x\": 0.0,\n        \"y\": 0.0,\n        \"z\": 0.0,\n        \"w\":
-    0.0\n    },\n    \"m_LiteralMode\": false\n}\n\n{\n    \"m_SGVersion\": 3,\n   
-    \"m_Type\": \"UnityEditor.ShaderGraph.Internal.ColorShaderProperty\",\n    \"m_ObjectId\":
-    \"fc7232180603407a8d902da985f8327c\",\n    \"m_Guid\": {\n        \"m_GuidSerialized\":
-    \"fdcf55a5-06b8-4315-930e-f24ab32c9d39\"\n    },\n    \"promotedFromAssetID\":
+    0.0\n    },\n    \"m_DefaultValue\": {\n        \"x\": 0.0,\n        \"y\": 0.0,\n       
+    \"z\": 0.0,\n        \"w\": 0.0\n    },\n    \"m_LiteralMode\": false\n}\n\n{\n   
+    \"m_SGVersion\": 3,\n    \"m_Type\": \"UnityEditor.ShaderGraph.Internal.ColorShaderProperty\",\n   
+    \"m_ObjectId\": \"fc7232180603407a8d902da985f8327c\",\n    \"m_Guid\": {\n       
+    \"m_GuidSerialized\": \"fdcf55a5-06b8-4315-930e-f24ab32c9d39\"\n    },\n    \"promotedFromAssetID\":
     \"\",\n    \"promotedFromCategoryName\": \"\",\n    \"promotedOrdering\": -1,\n   
     \"m_Name\": \"SnowColor\",\n    \"m_DefaultRefNameVersion\": 1,\n    \"m_RefNameGeneratedByDisplayName\":
     \"SnowColor\",\n    \"m_DefaultReferenceName\": \"_SnowColor\",\n    \"m_OverrideReferenceName\":
@@ -2699,7 +2726,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 94
+  controlID: 23484
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -2778,7 +2805,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GhostRuns
+    - Assets/Art/Models
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2788,36 +2815,37 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/GhostRuns
+  - Assets/Art/Models
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller
   m_LockTracker:
     m_IsLocked: 1
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 466}
+    scrollPos: {x: 0, y: 335}
     m_SelectedIDs:
-    - m_Data: 42214
+    - m_Data: 42248
     m_LastClickedID:
-      m_Data: 42214
+      m_Data: 42248
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 42052
-    - m_Data: 42054
-    - m_Data: 42056
-    - m_Data: 42058
-    - m_Data: 42060
-    - m_Data: 42062
-    - m_Data: 42064
-    - m_Data: 42066
-    - m_Data: 42068
-    - m_Data: 42070
-    - m_Data: 42072
-    - m_Data: 42074
-    - m_Data: 42076
-    - m_Data: 42078
-    - m_Data: 42080
-    - m_Data: 42082
+    - m_Data: 42238
+    - m_Data: 42240
+    - m_Data: 42242
+    - m_Data: 42244
+    - m_Data: 42246
+    - m_Data: 42250
+    - m_Data: 42252
+    - m_Data: 42254
+    - m_Data: 42256
+    - m_Data: 42260
+    - m_Data: 42262
+    - m_Data: 42264
+    - m_Data: 42266
+    - m_Data: 42268
+    - m_Data: 42290
+    - m_Data: 1000000000
+    - m_Data: 2147483647
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2850,22 +2878,23 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 42052
-    - m_Data: 42054
-    - m_Data: 42056
-    - m_Data: 42058
-    - m_Data: 42060
-    - m_Data: 42062
-    - m_Data: 42064
-    - m_Data: 42066
-    - m_Data: 42068
-    - m_Data: 42070
-    - m_Data: 42072
-    - m_Data: 42074
-    - m_Data: 42076
-    - m_Data: 42078
-    - m_Data: 42080
-    - m_Data: 42082
+    - m_Data: 42238
+    - m_Data: 42240
+    - m_Data: 42242
+    - m_Data: 42244
+    - m_Data: 42246
+    - m_Data: 42250
+    - m_Data: 42252
+    - m_Data: 42254
+    - m_Data: 42256
+    - m_Data: 42260
+    - m_Data: 42262
+    - m_Data: 42264
+    - m_Data: 42266
+    - m_Data: 42268
+    - m_Data: 42290
+    - m_Data: 1000000000
+    - m_Data: 2147483647
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3230,7 +3259,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Settings
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -3240,36 +3269,34 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Settings
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller
   m_LockTracker:
     m_IsLocked: 1
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 631.51245}
+    scrollPos: {x: 0, y: 450.49997}
     m_SelectedIDs:
-    - m_Data: 42274
+    - m_Data: 42334
     m_LastClickedID:
-      m_Data: 42274
+      m_Data: 42334
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 42052
-    - m_Data: 42054
-    - m_Data: 42056
-    - m_Data: 42058
-    - m_Data: 42060
-    - m_Data: 42062
-    - m_Data: 42064
-    - m_Data: 42066
-    - m_Data: 42068
-    - m_Data: 42070
-    - m_Data: 42072
-    - m_Data: 42074
-    - m_Data: 42076
-    - m_Data: 42078
-    - m_Data: 42080
-    - m_Data: 42082
+    - m_Data: 42238
+    - m_Data: 42240
+    - m_Data: 42242
+    - m_Data: 42246
+    - m_Data: 42250
+    - m_Data: 42252
+    - m_Data: 42254
+    - m_Data: 42256
+    - m_Data: 42260
+    - m_Data: 42262
+    - m_Data: 42264
+    - m_Data: 42266
+    - m_Data: 42268
+    - m_Data: 42290
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -3304,22 +3331,23 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 42052
-    - m_Data: 42054
-    - m_Data: 42056
-    - m_Data: 42058
-    - m_Data: 42060
-    - m_Data: 42062
-    - m_Data: 42064
-    - m_Data: 42066
-    - m_Data: 42068
-    - m_Data: 42070
-    - m_Data: 42072
-    - m_Data: 42074
-    - m_Data: 42076
-    - m_Data: 42078
-    - m_Data: 42080
-    - m_Data: 42082
+    - m_Data: 42238
+    - m_Data: 42240
+    - m_Data: 42242
+    - m_Data: 42244
+    - m_Data: 42246
+    - m_Data: 42250
+    - m_Data: 42252
+    - m_Data: 42254
+    - m_Data: 42256
+    - m_Data: 42260
+    - m_Data: 42262
+    - m_Data: 42264
+    - m_Data: 42266
+    - m_Data: 42268
+    - m_Data: 42290
+    - m_Data: 1000000000
+    - m_Data: 2147483647
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3346,9 +3374,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs:
+    - m_Data: -129822
+    m_LastClickedInstanceID: -129822
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 86756
     - m_Data: 47770

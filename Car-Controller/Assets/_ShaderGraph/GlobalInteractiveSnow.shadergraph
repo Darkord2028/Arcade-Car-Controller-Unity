@@ -20,9 +20,6 @@
         },
         {
             "m_Id": "fc7232180603407a8d902da985f8327c"
-        },
-        {
-            "m_Id": "f97cf4f7c75949acae75495fbf07599a"
         }
     ],
     "m_Keywords": [],
@@ -2199,7 +2196,7 @@
     "m_ObjectId": "6e052c2948ea4b0792ab79c23bd24d0c",
     "m_Title": "World UV",
     "m_Position": {
-        "x": -3465.60009765625,
+        "x": -3465.600341796875,
         "y": 599.2000122070313
     }
 }
@@ -2360,9 +2357,6 @@
         },
         {
             "m_Id": "a855887bb3a5461dbec2a0c394e2ee77"
-        },
-        {
-            "m_Id": "f97cf4f7c75949acae75495fbf07599a"
         }
     ]
 }
@@ -3062,8 +3056,8 @@
     "m_ObjectId": "aa943b2448f944e28b2c27369ea4c7f8",
     "m_Title": "World UV",
     "m_Position": {
-        "x": -3469.60009765625,
-        "y": 131.199951171875
+        "x": -3469.600341796875,
+        "y": 131.2000274658203
     }
 }
 
@@ -4183,50 +4177,6 @@
         "y": 0.0
     },
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "f97cf4f7c75949acae75495fbf07599a",
-    "m_Guid": {
-        "m_GuidSerialized": "9b8f0008-ee56-4333-92ed-a14a572a450c"
-    },
-    "promotedFromAssetID": "",
-    "promotedFromCategoryName": "",
-    "promotedOrdering": -1,
-    "m_Name": "CellDensity",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "CellDensity",
-    "m_DefaultReferenceName": "_CellDensity",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_PerRendererData": false,
-    "m_customAttributes": [],
-    "m_Value": 20.0,
-    "m_FloatType": 0,
-    "m_LiteralFloatMode": false,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    },
-    "m_SliderType": 0,
-    "m_SliderPower": 3.0,
-    "m_EnumType": 0,
-    "m_CSharpEnumString": "",
-    "m_EnumNames": [
-        "Default"
-    ],
-    "m_EnumValues": [
-        0
-    ]
 }
 
 {
