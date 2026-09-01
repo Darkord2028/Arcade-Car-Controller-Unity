@@ -78,7 +78,7 @@ public class GlobalSnowManager : MonoBehaviour
     {
         if (globalSnowTexture == null)
         {
-            globalSnowTexture = new RenderTexture(resolution, resolution, 24);
+            globalSnowTexture = new RenderTexture(resolution, resolution, 0, RenderTextureFormat.RFloat);
             globalSnowTexture.enableRandomWrite = true;
 
             globalSnowTexture.wrapMode = TextureWrapMode.Clamp;

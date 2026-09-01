@@ -3,7 +3,7 @@
 #pragma kernel DrawSpot
 #pragma kernel FillSnow
 
-RWTexture2D<float4> snowImage;
+RWTexture2D<float> snowImage;
 float colorValueToAdd;
 float resolution;
 float xPos;
@@ -18,13 +18,13 @@ float fillRate;
 [numthreads(8, 8, 1)]
 void Init(uint3 id : SV_DispatchThreadID)
 {
-    snowImage[id.xy] += float4(colorValueToAdd, colorValueToAdd, colorValueToAdd, 0);
+    snowImage[id.xy] += colorValueToAdd;
 }
 
 [numthreads(8, 8, 1)]
 void FillBlack(uint3 id : SV_DispatchThreadID)
 {
-    snowImage[id.xy] = float4(0.0, 0.0, 0.0, 1.0);
+    snowImage[id.xy] = 0.0;
 }
 
 [numthreads(8, 8, 1)]
@@ -43,9 +43,9 @@ void DrawSpot(uint3 id : SV_DispatchThreadID)
     {
         float intensity = 1.0 - (dist / spotSize);
         
-        if (intensity > snowImage[pixelCoord].x)
+        if (intensity > snowImage[pixelCoord])
         {
-            snowImage[pixelCoord] = float4(intensity, intensity, intensity, 1.0);
+            snowImage[pixelCoord] = intensity;
         }
     }
 }
@@ -53,13 +53,11 @@ void DrawSpot(uint3 id : SV_DispatchThreadID)
 [numthreads(8, 8, 1)]
 void FillSnow(uint3 id : SV_DispatchThreadID)
 {
-    float currentDepth = snowImage[id.xy].x;
+    float currentDepth = snowImage[id.xy];
     
     if (currentDepth > 0.0)
     {
         currentDepth -= fillRate;
-        currentDepth = max(currentDepth, 0.0);
-        
-        snowImage[id.xy] = float4(currentDepth, currentDepth, currentDepth, 1.0);
+        snowImage[id.xy] = max(currentDepth, 0.0);
     }
 }

@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 23405
+  controlID: 39147
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
-  m_Stats: 1
+  m_Stats: 0
   m_SelectedSizes: 03000000000000000000000006000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 23406
+  controlID: 39148
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 23407
+  controlID: 39149
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 23408
+  controlID: 39150
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -275,11 +275,14 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: -129822
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: -129822
+        m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -159470
+      - m_Data: -144132
+      - m_Data: -141234
+      - m_Data: -134118
       - m_Data: -129666
       - m_Data: -127552
       - m_Data: -121690
@@ -1069,9 +1072,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 66.13884, y: -57.340378, z: 46.27617}
+    m_Target: {x: 70.84699, y: 30.049187, z: -14.500553}
     speed: 2
-    m_Value: {x: 66.13884, y: -57.340378, z: 46.27617}
+    m_Value: {x: 70.84699, y: 30.049187, z: -14.500553}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1117,13 +1120,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2747405, y: 0.5200162, z: -0.18126203, w: 0.7882008}
+    m_Target: {x: 0.31269822, y: -0.5568093, z: 0.23791194, w: 0.7318398}
     speed: 2
-    m_Value: {x: 0.27473837, y: 0.52001214, z: -0.18126063, w: 0.7881947}
+    m_Value: {x: -0.31269822, y: 0.5568093, z: -0.23791194, w: -0.7318398}
   m_Size:
-    m_Target: 70.08392
+    m_Target: 9.354147
     speed: 2
-    m_Value: 70.08392
+    m_Value: 9.354147
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2726,7 +2729,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 23484
+  controlID: 39254
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -2832,7 +2835,6 @@ MonoBehaviour:
     - m_Data: 42238
     - m_Data: 42240
     - m_Data: 42242
-    - m_Data: 42244
     - m_Data: 42246
     - m_Data: 42250
     - m_Data: 42252
@@ -2844,6 +2846,7 @@ MonoBehaviour:
     - m_Data: 42266
     - m_Data: 42268
     - m_Data: 42290
+    - m_Data: 216036
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -2881,7 +2884,6 @@ MonoBehaviour:
     - m_Data: 42238
     - m_Data: 42240
     - m_Data: 42242
-    - m_Data: 42244
     - m_Data: 42246
     - m_Data: 42250
     - m_Data: 42252
@@ -2893,6 +2895,7 @@ MonoBehaviour:
     - m_Data: 42266
     - m_Data: 42268
     - m_Data: 42290
+    - m_Data: 216036
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -3259,7 +3262,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Art/Prefab/Effects
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -3269,23 +3272,24 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Art/Prefab/Effects
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\UnityProjects\Arcade-Car-Controller\Arcade-Car-Controller-Unity\Car-Controller
   m_LockTracker:
     m_IsLocked: 1
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 450.49997}
+    scrollPos: {x: 0, y: 320.00256}
     m_SelectedIDs:
-    - m_Data: 42334
+    - m_Data: 42314
     m_LastClickedID:
-      m_Data: 42334
+      m_Data: 42314
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 42238
     - m_Data: 42240
     - m_Data: 42242
+    - m_Data: 42244
     - m_Data: 42246
     - m_Data: 42250
     - m_Data: 42252
@@ -3297,6 +3301,7 @@ MonoBehaviour:
     - m_Data: 42266
     - m_Data: 42268
     - m_Data: 42290
+    - m_Data: 216036
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -3334,7 +3339,6 @@ MonoBehaviour:
     - m_Data: 42238
     - m_Data: 42240
     - m_Data: 42242
-    - m_Data: 42244
     - m_Data: 42246
     - m_Data: 42250
     - m_Data: 42252
@@ -3346,6 +3350,7 @@ MonoBehaviour:
     - m_Data: 42266
     - m_Data: 42268
     - m_Data: 42290
+    - m_Data: 216036
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -3374,10 +3379,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: -129822
-    m_LastClickedInstanceID: -129822
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: []
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_Data: 86756
     - m_Data: 47770
